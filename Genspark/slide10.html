@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>ローカル競合マップ（地図風レイアウト）</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+    <style>
+      body {
+        font-family: "Noto Sans JP", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f3f4f6;
+        width: 1280px;
+        height: 720px;
+        overflow: hidden;
+      }
+      .hpb-orange {
+        color: #ff6b35;
+      }
+      .bg-hpb-orange {
+        background-color: #ff6b35;
+      }
+      .text-hpb-orange {
+        color: #ff6b35;
+      }
+      .border-hpb-orange {
+        border-color: #ff6b35;
+      }
+
+      .slide-container {
+        width: 1280px;
+        height: 720px;
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        position: relative;
+      }
+
+      /* Map specific styles */
+      .map-container {
+        position: relative;
+        background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+CjxwYXRoIGQ9Ik0wIDBoNDB2NDBIMHoiIGZpbGw9IiNmOWZhZmIiLz4KPHBhdGggZD0iTTAgNDBMMTQwIDBoMS41TDAgNDEuNXptNDAgMEwwIDBoMS41TDQwIDQxLjV6IiBzdHJva2U9IiNlNWU3ZWIiIHN0cm9rZS13aWR0aD0iMSIvPgo8L3N2Zz4=");
+        background-size: 80px 80px;
+      }
+
+      .station-marker {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 10;
+        background-color: #1a202c;
+        color: white;
+        padding: 8px 16px;
+        border-radius: 4px;
+        font-weight: bold;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Legend */
+      .legend-item {
+        display: flex;
+        align-items: center;
+        font-size: 0.75rem;
+        color: #6b7280;
+        margin-bottom: 4px;
+      }
+      .legend-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        margin-right: 6px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide-container">
+      <!-- Header -->
+      <div
+        class="h-20 flex items-center justify-between px-16 border-b border-gray-100 bg-white z-10"
+      >
+        <div class="flex items-center space-x-2">
+          <div
+            class="bg-gray-800 w-8 h-8 rounded-md flex items-center justify-center text-white"
+          >
+            <i class="fas fa-map-marked-alt text-sm"></i>
+          </div>
+          <p class="text-gray-500 font-bold text-sm tracking-wider">
+            LOCAL COMPETITION MAP
+          </p>
+        </div>
+        <p class="text-gray-400 text-sm">渋谷エリア 競合分布</p>
+      </div>
+      <!-- Main Content -->
+      <div class="flex-1 flex px-16 py-8 gap-8 bg-gray-50">
+        <!-- Left Side: Insights -->
+        <div class="w-1/3 flex flex-col justify-between">
+          <div>
+            <h2 class="text-3xl font-bold text-gray-800 mb-4 leading-tight">
+              渋谷駅徒歩5分圏内<br />
+              <span class="text-hpb-orange">競合密集エリア</span>の分析
+            </h2>
+            <p class="text-gray-600 mb-6 leading-relaxed text-sm">
+              Siena渋谷は、激戦区である渋谷駅から徒歩2-3分の好立地に位置しています。同価格帯（カット+カラー¥6,000〜¥8,000）の競合が多数存在しますが、特に「トレンド×低価格」を打ち出すサロンとの直接競合が激しい状況です。
+            </p>
+            <!-- Key Metrics Card -->
+            <div
+              class="bg-white p-5 rounded-xl shadow-sm border-l-4 border-hpb-orange mb-4"
+            >
+              <h4 class="text-sm font-bold text-gray-400 uppercase mb-2">
+                TARGET AREA STATS
+              </h4>
+              <div
+                class="flex justify-between items-end border-b border-gray-100 pb-2 mb-2"
+              >
+                <p class="text-gray-600 text-sm font-medium">競合サロン数</p>
+                <p class="text-2xl font-bold text-gray-800">
+                  12<span class="text-sm text-gray-400 ml-1">店舗</span>
+                </p>
+              </div>
+              <div class="flex justify-between items-end">
+                <p class="text-gray-600 text-sm font-medium">平均単価(推計)</p>
+                <p class="text-2xl font-bold text-gray-800">¥7,800</p>
+              </div>
+            </div>
+          </div>
+          <!-- Legend Box -->
+          <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-200">
+            <p class="text-xs font-bold text-gray-400 mb-2">
+              凡例：バブルの意味
+            </p>
+            <div class="grid grid-cols-2 gap-2">
+              <div class="legend-item">
+                <span class="legend-dot bg-red-500"></span>
+                <p>高価格帯 (¥10,000~)</p>
+              </div>
+              <div class="legend-item">
+                <span class="legend-dot bg-hpb-orange"></span>
+                <p>中価格帯 (¥6,000~¥9,999)</p>
+              </div>
+              <div class="legend-item">
+                <span class="legend-dot bg-blue-400"></span>
+                <p>低価格帯 (~¥5,999)</p>
+              </div>
+              <div class="legend-item">
+                <span
+                  class="w-2 h-2 rounded-full border border-gray-400 mr-2 bg-white"
+                ></span>
+                <p>円の大きさ = 席数規模</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Right Side: ECharts Map -->
+        <div
+          class="w-2/3 bg-white rounded-2xl shadow-sm border border-gray-200 p-2 relative overflow-hidden"
+        >
+          <div id="competitionMap" style="width: 100%; height: 100%"></div>
+          <!-- Static Overlay for Station -->
+          <div
+            class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none z-10 bg-gray-800 text-white px-3 py-1 rounded text-xs font-bold shadow-lg opacity-80"
+          >
+            <i class="fas fa-subway mr-1"></i>渋谷駅
+          </div>
+          <!-- Distance Circles Labels -->
+          <div
+            class="absolute top-[20%] left-[80%] text-xs text-gray-400 font-bold bg-white px-2 rounded opacity-70"
+          >
+            徒歩5分圏内
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      var chartDom = document.getElementById("competitionMap");
+      var myChart = echarts.init(chartDom);
+      var option;
+
+      // Mock Data: [X(Longitude-ish), Y(Latitude-ish), Size(Seats), PriceTier(Color), Name, Price]
+      // 0,0 is Shibuya Station
+      var data = [
+        // Target
+        {
+          name: "Siena 渋谷",
+          value: [15, 20, 40, "Target", "¥6,400"],
+          itemStyle: {
+            color: "#FF6B35",
+            borderColor: "#fff",
+            borderWidth: 3,
+            shadowBlur: 10,
+            shadowColor: "rgba(0,0,0,0.3)",
+          },
+        },
+
+        // Competitors High Price
+        {
+          name: "SHACHU",
+          value: [30, 40, 25, "High", "¥14,000"],
+          itemStyle: { color: "#ef4444" },
+        },
+        {
+          name: "ALBUM",
+          value: [-20, 30, 60, "High", "¥11,000"],
+          itemStyle: { color: "#ef4444" },
+        },
+
+        // Competitors Mid Price (Direct Competitors)
+        {
+          name: "EIGHT",
+          value: [-30, -10, 35, "Mid", "¥7,500"],
+          itemStyle: { color: "#fb923c" },
+        },
+        {
+          name: "La fith",
+          value: [40, -20, 30, "Mid", "¥6,900"],
+          itemStyle: { color: "#fb923c" },
+        },
+        {
+          name: "Zina",
+          value: [10, -35, 28, "Mid", "¥8,000"],
+          itemStyle: { color: "#fb923c" },
+        },
+        {
+          name: "Merak",
+          value: [-15, 15, 20, "Mid", "¥7,000"],
+          itemStyle: { color: "#fb923c" },
+        },
+
+        // Competitors Low Price
+        {
+          name: "Agu hair",
+          value: [-40, 50, 25, "Low", "¥4,500"],
+          itemStyle: { color: "#60a5fa" },
+        },
+        {
+          name: "Ursus",
+          value: [50, 10, 22, "Low", "¥4,900"],
+          itemStyle: { color: "#60a5fa" },
+        },
+        {
+          name: "AUBE",
+          value: [20, 60, 30, "Low", "¥5,200"],
+          itemStyle: { color: "#60a5fa" },
+        },
+
+        // Others
+        {
+          name: "HAVANA",
+          value: [-50, -30, 40, "High", "¥12,000"],
+          itemStyle: { color: "#ef4444" },
+        },
+        {
+          name: "FILMS",
+          value: [60, -50, 30, "High", "¥13,500"],
+          itemStyle: { color: "#ef4444" },
+        },
+      ];
+
+      option = {
+        grid: {
+          left: "5%",
+          right: "5%",
+          top: "5%",
+          bottom: "5%",
+          containLabel: true,
+        },
+        tooltip: {
+          trigger: "item",
+          formatter: function (params) {
+            return `
+                        <div style="font-family:'Noto Sans JP'; padding:4px;">
+                            <div style="font-weight:bold; margin-bottom:4px; color:#1f2937;">${
+                              params.data.name
+                            }</div>
+                            <div style="font-size:12px; color:#4b5563;">平均単価: <span style="font-weight:bold;">${
+                              params.data.value[4]
+                            }</span></div>
+                            <div style="font-size:12px; color:#4b5563;">推定席数: <span style="font-weight:bold;">${
+                              params.data.value[2] < 30 ? "小-中" : "大"
+                            }規模</span></div>
+                        </div>
+                    `;
+          },
+          backgroundColor: "rgba(255, 255, 255, 0.95)",
+          borderColor: "#e5e7eb",
+          borderWidth: 1,
+          textStyle: {
+            color: "#333",
+          },
+          extraCssText:
+            "box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); border-radius: 8px;",
+        },
+        xAxis: {
+          show: false,
+          min: -70,
+          max: 70,
+          type: "value",
+        },
+        yAxis: {
+          show: false,
+          min: -70,
+          max: 70,
+          type: "value",
+        },
+        series: [
+          // Background Circles (Distance zones)
+          {
+            type: "custom",
+            renderItem: function (params, api) {
+              var center = api.coord([0, 0]);
+              var radius1 = api.size([40, 0])[0]; // Approx 3min walk
+              var radius2 = api.size([70, 0])[0]; // Approx 5min walk
+
+              return {
+                type: "group",
+                children: [
+                  {
+                    type: "circle",
+                    shape: { cx: center[0], cy: center[1], r: radius1 },
+                    style: {
+                      fill: "rgba(255, 107, 53, 0.03)",
+                      stroke: "#e5e7eb",
+                      lineDash: [4, 4],
+                    },
+                    z2: 1,
+                  },
+                  {
+                    type: "circle",
+                    shape: { cx: center[0], cy: center[1], r: radius2 },
+                    style: {
+                      fill: "none",
+                      stroke: "#e5e7eb",
+                      lineDash: [4, 4],
+                    },
+                    z2: 1,
+                  },
+                ],
+              };
+            },
+            data: [0],
+            z: 1,
+          },
+          // Bubble Chart for Competitors
+          {
+            type: "scatter",
+            symbolSize: function (data) {
+              return Math.sqrt(data[2]) * 10; // Size based on seats
+            },
+            data: data,
+            label: {
+              show: true,
+              formatter: "{b}",
+              position: "bottom",
+              fontSize: 10,
+              fontWeight: "bold",
+              color: "#4b5563",
+              backgroundColor: "rgba(255,255,255,0.7)",
+              padding: [2, 4],
+              borderRadius: 4,
+            },
+            itemStyle: {
+              shadowBlur: 5,
+              shadowColor: "rgba(0, 0, 0, 0.2)",
+              opacity: 0.9,
+            },
+            z: 10,
+          },
+        ],
+        animationDurationUpdate: 1000,
+        animationEasingUpdate: "quinticInOut",
+      };
+
+      myChart.setOption(option);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>掲載提案｜クーポン設計</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Noto Sans JP", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f3f4f6;
+        width: 1280px;
+        height: 720px;
+        overflow: hidden;
+      }
+      .hpb-orange {
+        color: #ff6b35;
+      }
+      .bg-hpb-orange {
+        background-color: #ff6b35;
+      }
+      .border-hpb-orange {
+        border-color: #ff6b35;
+      }
+      .text-hpb-orange {
+        color: #ff6b35;
+      }
+      .bg-hpb-orange-light {
+        background-color: #fff0e9;
+      }
+      .bg-hpb-orange-10 {
+        background-color: rgba(255, 107, 53, 0.1);
+      }
+
+      .slide-container {
+        width: 1280px;
+        height: 720px;
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        position: relative;
+      }
+
+      /* Coupon Card Styles */
+      .coupon-card {
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        overflow: hidden;
+        display: flex;
+        background: white;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+        position: relative;
+      }
+      .coupon-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        border-color: #ff6b35;
+      }
+      .coupon-left {
+        width: 80px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: #f9fafb;
+        border-right: 1px dashed #d1d5db;
+        padding: 8px;
+      }
+      .coupon-right {
+        flex: 1;
+        padding: 12px 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .coupon-tag {
+        font-size: 0.65rem;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-weight: bold;
+        margin-bottom: 4px;
+        display: inline-block;
+      }
+
+      /* Strategy Flow Arrows */
+      .flow-arrow {
+        position: absolute;
+        top: 50%;
+        right: -24px;
+        transform: translateY(-50%);
+        color: #d1d5db;
+        font-size: 1.5rem;
+        z-index: 10;
+      }
+
+      /* Step Card */
+      .step-card {
+        background: white;
+        border-radius: 12px;
+        padding: 16px;
+        border: 2px solid transparent;
+      }
+      .step-card.active {
+        border-color: #3b82f6;
+        background-color: #eff6ff;
+      }
+
+      .badge-new {
+        background-color: #ff6b35;
+        color: white;
+      }
+      .badge-student {
+        background-color: #10b981;
+        color: white;
+      }
+      .badge-weekday {
+        background-color: #6366f1;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide-container">
+      <!-- Header -->
+      <div
+        class="h-20 flex items-center justify-between px-16 border-b border-gray-100 bg-white z-10"
+      >
+        <div class="flex items-center space-x-2">
+          <div
+            class="bg-hpb-orange w-8 h-8 rounded-md flex items-center justify-center text-white"
+          >
+            <i class="fas fa-ticket-alt text-sm"></i>
+          </div>
+          <p class="text-gray-400 font-bold text-sm tracking-wider">
+            STRATEGIC PROPOSAL
+          </p>
+        </div>
+        <p class="text-gray-400 text-sm">クーポン戦略設計</p>
+      </div>
+      <!-- Main Content -->
+      <div class="flex-1 px-16 py-8 bg-gray-50 flex gap-8">
+        <!-- Left Column: Acquisition Strategy (New Customers) -->
+        <div class="w-3/5 flex flex-col">
+          <div class="mb-4">
+            <div class="flex items-center mb-2">
+              <span
+                class="bg-hpb-orange text-white text-xs font-bold px-2 py-1 rounded mr-2"
+                >PHASE 1</span
+              >
+              <h2 class="text-2xl font-bold text-gray-800">新規集客の3本柱</h2>
+            </div>
+            <p class="text-sm text-gray-600">
+              ターゲット別の明確な入り口を用意し、取りこぼしを防ぐ最強の布陣。
+            </p>
+          </div>
+          <div class="flex-1 space-y-4">
+            <!-- Coupon 1: Trend Main -->
+            <div
+              class="bg-white rounded-xl p-1 shadow-sm border-l-4 border-hpb-orange"
+            >
+              <div class="flex p-4">
+                <div
+                  class="w-16 flex flex-col items-center justify-center mr-4"
+                >
+                  <i class="fas fa-crown text-2xl text-hpb-orange mb-1"></i>
+                  <span class="text-xs font-bold text-hpb-orange">主力</span>
+                </div>
+                <div class="flex-1">
+                  <div class="flex justify-between items-start mb-1">
+                    <h3 class="font-bold text-gray-800 text-lg">
+                      【人気No.1】イルミナカラー＋最新3stepトリートメント
+                    </h3>
+                    <span
+                      class="bg-red-100 text-red-500 text-xs font-bold px-2 py-1 rounded"
+                      >注目</span
+                    >
+                  </div>
+                  <div class="flex items-end gap-2 mb-2">
+                    <p class="text-gray-400 text-xs line-through">¥10,500</p>
+                    <p class="text-3xl font-bold text-gray-800 leading-none">
+                      ¥6,400
+                    </p>
+                    <span
+                      class="text-xs text-gray-500 font-bold bg-gray-100 px-2 py-1 rounded"
+                      >Siena基準価格</span
+                    >
+                  </div>
+                  <p
+                    class="text-xs text-gray-500 border-t border-dashed border-gray-200 pt-2"
+                  >
+                    <i class="fas fa-bullseye mr-1 text-hpb-orange"></i>
+                    <strong>狙い:</strong>
+                    「透明感×ケア」を求めるトレンド層の最大母集団を獲得。競合価格帯（¥6,500〜）に対し、微差で優位性を作る戦略価格。
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- Coupon 2: Student -->
+            <div
+              class="bg-white rounded-xl p-1 shadow-sm border-l-4 border-green-500"
+            >
+              <div class="flex p-4">
+                <div
+                  class="w-16 flex flex-col items-center justify-center mr-4"
+                >
+                  <i
+                    class="fas fa-graduation-cap text-2xl text-green-500 mb-1"
+                  ></i>
+                  <span class="text-xs font-bold text-green-500">若年層</span>
+                </div>
+                <div class="flex-1">
+                  <div class="flex justify-between items-start mb-1">
+                    <h3 class="font-bold text-gray-800 text-lg">
+                      【学割U24】カット＋透明感カラー＋トリートメント
+                    </h3>
+                    <span
+                      class="bg-green-100 text-green-600 text-xs font-bold px-2 py-1 rounded"
+                      >学生限定</span
+                    >
+                  </div>
+                  <div class="flex items-end gap-2 mb-2">
+                    <p class="text-gray-400 text-xs line-through">¥12,500</p>
+                    <p class="text-3xl font-bold text-gray-800 leading-none">
+                      ¥8,900
+                    </p>
+                  </div>
+                  <p
+                    class="text-xs text-gray-500 border-t border-dashed border-gray-200 pt-2"
+                  >
+                    <i class="fas fa-bullseye mr-1 text-green-500"></i>
+                    <strong>狙い:</strong>
+                    客単価は維持しつつ「学割」という名目で心理的ハードルを下げる。卒業後も通える関係性を構築。
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- Coupon 3: Weekday -->
+            <div
+              class="bg-white rounded-xl p-1 shadow-sm border-l-4 border-indigo-500"
+            >
+              <div class="flex p-4">
+                <div
+                  class="w-16 flex flex-col items-center justify-center mr-4"
+                >
+                  <i class="fas fa-clock text-2xl text-indigo-500 mb-1"></i>
+                  <span class="text-xs font-bold text-indigo-500">稼働率</span>
+                </div>
+                <div class="flex-1">
+                  <div class="flex justify-between items-start mb-1">
+                    <h3 class="font-bold text-gray-800 text-lg">
+                      【平日限定】フルカラー＋トリートメント（カットなし）
+                    </h3>
+                    <span
+                      class="bg-indigo-100 text-indigo-600 text-xs font-bold px-2 py-1 rounded"
+                      >平日のみ</span
+                    >
+                  </div>
+                  <div class="flex items-end gap-2 mb-2">
+                    <p class="text-gray-400 text-xs line-through">¥8,000</p>
+                    <p class="text-3xl font-bold text-gray-800 leading-none">
+                      ¥5,900
+                    </p>
+                  </div>
+                  <p
+                    class="text-xs text-gray-500 border-t border-dashed border-gray-200 pt-2"
+                  >
+                    <i class="fas fa-bullseye mr-1 text-indigo-500"></i>
+                    <strong>狙い:</strong>
+                    平日の空き枠を埋めるための戦略的フック商品。メンテナンス需要の取り込みで来店サイクルを短縮。
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Right Column: Retention Strategy (Repeat Customers) -->
+        <div class="w-2/5 flex flex-col relative">
+          <!-- Connection Arrow -->
+          <div class="absolute top-1/2 -left-10 transform -translate-y-1/2 z-0">
+            <i class="fas fa-chevron-right text-4xl text-gray-200"></i>
+          </div>
+          <div class="mb-4 pl-4 border-l border-gray-200">
+            <div class="flex items-center mb-2">
+              <span
+                class="bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded mr-2"
+                >PHASE 2</span
+              >
+              <h2 class="text-2xl font-bold text-gray-800">
+                定着化の2ステップ
+              </h2>
+            </div>
+            <p class="text-sm text-gray-600">
+              「3回安定」の法則に基づき、失客しやすい2回目・3回目の壁を超える設計。
+            </p>
+          </div>
+          <div
+            class="flex-1 flex flex-col justify-center space-y-6 pl-4 border-l border-gray-200"
+          >
+            <!-- Step 1 -->
+            <div
+              class="bg-blue-50 rounded-xl p-5 border-2 border-blue-200 relative"
+            >
+              <div
+                class="absolute -left-3 top-1/2 transform -translate-y-1/2 bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center font-bold text-sm border-2 border-white"
+              >
+                2
+              </div>
+              <h3 class="font-bold text-blue-800 mb-2">
+                2回目特典（45日以内）
+              </h3>
+              <div class="bg-white p-3 rounded-lg border border-blue-100 mb-2">
+                <p class="text-sm font-bold text-gray-800">
+                  初回と同じ価格でご案内
+                </p>
+                <p class="text-xs text-gray-500">
+                  ※通常料金に戻るショックを緩和
+                </p>
+              </div>
+              <p class="text-xs text-blue-600 leading-snug">
+                <i class="fas fa-lightbulb mr-1"></i>
+                「初回クーポン荒らし」を防ぎつつ、本気で通いたい顧客を選別・優遇するフェーズ。
+              </p>
+            </div>
+            <!-- Down Arrow -->
+            <div class="flex justify-center -my-2">
+              <i class="fas fa-arrow-down text-blue-200 text-xl"></i>
+            </div>
+            <!-- Step 2 -->
+            <div
+              class="bg-yellow-50 rounded-xl p-5 border-2 border-yellow-200 relative"
+            >
+              <div
+                class="absolute -left-3 top-1/2 transform -translate-y-1/2 bg-yellow-500 text-white w-6 h-6 rounded-full flex items-center justify-center font-bold text-sm border-2 border-white"
+              >
+                3
+              </div>
+              <h3 class="font-bold text-yellow-800 mb-2">
+                3回目来店パス（Step Card）
+              </h3>
+              <div
+                class="bg-white p-3 rounded-lg border border-yellow-100 mb-2"
+              >
+                <p class="text-sm font-bold text-gray-800">
+                  3回目までトリートメント無料
+                </p>
+                <p class="text-xs text-gray-500">or 店販商品10%OFFチケット</p>
+              </div>
+              <p class="text-xs text-yellow-700 leading-snug">
+                <i class="fas fa-lightbulb mr-1"></i>
+                3回目の来店で「行きつけ」化が完了。ここで高単価メニュー（髪質改善など）へ誘導。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Footer Insight -->
+      <div class="bg-gray-800 text-white h-16 flex items-center px-16 z-20">
+        <div class="flex items-center space-x-4">
+          <div class="bg-hpb-orange p-1.5 rounded-full">
+            <i class="fas fa-chart-line text-white text-sm"></i>
+          </div>
+          <p class="text-sm font-medium">
+            <span class="text-hpb-orange font-bold">戦略ポイント：</span>
+            安売り競争に巻き込まれないよう、「初回＝お試し」ではなく<span
+              class="border-b border-hpb-orange"
+              >「初回＝関係性のスタート」</span
+            >と位置づける価格設計です。
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

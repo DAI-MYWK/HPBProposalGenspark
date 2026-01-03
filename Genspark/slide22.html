@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>アポイント獲得メール文面</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Noto Sans JP", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f3f4f6;
+        width: 1280px;
+        height: 720px;
+        overflow: hidden;
+      }
+      .hpb-orange {
+        color: #ff6b35;
+      }
+      .bg-hpb-orange {
+        background-color: #ff6b35;
+      }
+      .border-hpb-orange {
+        border-color: #ff6b35;
+      }
+      .text-hpb-orange {
+        color: #ff6b35;
+      }
+      .bg-hpb-orange-light {
+        background-color: #fff0e9;
+      }
+
+      .slide-container {
+        width: 1280px;
+        height: 720px;
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        position: relative;
+      }
+
+      /* Tab Styling */
+      .tab-btn {
+        transition: all 0.3s ease;
+        position: relative;
+      }
+      .tab-btn.active {
+        background-color: #ff6b35;
+        color: white;
+        border-color: #ff6b35;
+        font-weight: bold;
+      }
+      .tab-btn.active::after {
+        content: "";
+        position: absolute;
+        bottom: -8px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-width: 8px 8px 0;
+        border-style: solid;
+        border-color: #ff6b35 transparent transparent transparent;
+      }
+
+      /* Content Transition */
+      .tab-content {
+        display: none;
+        animation: fadeIn 0.4s ease;
+      }
+      .tab-content.active {
+        display: flex;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(5px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Copy Button Interaction */
+      .copy-btn:active {
+        transform: scale(0.95);
+      }
+
+      /* Toast Notification */
+      .toast {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%) translateY(100px);
+        background-color: #333;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 50px;
+        font-size: 14px;
+        opacity: 0;
+        transition: all 0.3s ease;
+        z-index: 50;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .toast.show {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+      }
+
+      .bubble-tail::before {
+        content: "";
+        position: absolute;
+        left: -8px;
+        top: 20px;
+        width: 0;
+        height: 0;
+        border-top: 8px solid transparent;
+        border-bottom: 8px solid transparent;
+        border-right: 8px solid #f3f4f6;
+      }
+      .line-green {
+        color: #06c755;
+      }
+      .bg-line-green {
+        background-color: #06c755;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide-container">
+      <!-- Header -->
+      <div
+        class="h-16 flex items-center justify-between px-16 border-b border-gray-100 bg-white z-10 shrink-0"
+      >
+        <div class="flex items-center space-x-2">
+          <div
+            class="bg-gray-800 w-8 h-8 rounded-md flex items-center justify-center text-white"
+          >
+            <i class="fas fa-envelope-open-text text-sm"></i>
+          </div>
+          <p class="text-gray-500 font-bold text-sm tracking-wider">
+            EMAIL TEMPLATES
+          </p>
+        </div>
+        <div class="flex items-center">
+          <span
+            class="bg-gray-100 text-gray-500 px-3 py-1 rounded text-xs font-bold mr-3"
+            >TOOL</span
+          >
+          <p class="text-gray-400 text-sm">アポイント獲得メール文面生成</p>
+        </div>
+      </div>
+      <!-- Main Content -->
+      <div class="flex-1 flex flex-col px-16 py-6 bg-gray-50 overflow-hidden">
+        <!-- Tab Navigation -->
+        <div class="flex space-x-4 mb-6 shrink-0">
+          <button
+            class="tab-btn active flex-1 py-3 rounded-lg border border-gray-200 bg-white text-gray-600 hover:bg-gray-50 text-sm shadow-sm"
+            onclick="switchTab('tab-a')"
+          >
+            <i class="fas fa-handshake mr-2"></i>A. 初回接触型
+          </button>
+          <button
+            class="tab-btn flex-1 py-3 rounded-lg border border-gray-200 bg-white text-gray-600 hover:bg-gray-50 text-sm shadow-sm"
+            onclick="switchTab('tab-b')"
+          >
+            <i class="fas fa-chart-pie mr-2"></i>B. 市場機会共有
+          </button>
+          <button
+            class="tab-btn flex-1 py-3 rounded-lg border border-gray-200 bg-white text-gray-600 hover:bg-gray-50 text-sm shadow-sm"
+            onclick="switchTab('tab-c')"
+          >
+            <i class="fas fa-lightbulb mr-2"></i>C. 具体提案フォロー
+          </button>
+          <button
+            class="tab-btn flex-1 py-3 rounded-lg border border-gray-200 bg-white text-gray-600 hover:bg-gray-50 text-sm shadow-sm"
+            onclick="switchTab('tab-d')"
+          >
+            <i class="fas fa-database mr-2"></i>D. データ訴求型
+          </button>
+        </div>
+        <!-- Tab Contents Container -->
+        <div class="flex-1 relative">
+          <!-- Tab A Content -->
+          <div class="tab-content active h-full gap-6" id="tab-a">
+            <!-- Email Area -->
+            <div
+              class="w-2/3 bg-white rounded-xl shadow-sm border border-gray-200 flex flex-col overflow-hidden"
+            >
+              <div
+                class="bg-gray-50 px-6 py-3 border-b border-gray-100 flex justify-between items-center"
+              >
+                <div class="flex items-center text-gray-600 font-bold text-sm">
+                  <i class="fas fa-envelope mr-2"></i>PCメール / DM
+                </div>
+                <button
+                  class="copy-btn bg-white border border-gray-300 text-gray-600 hover:text-hpb-orange hover:border-hpb-orange px-3 py-1 rounded text-xs font-bold transition-colors"
+                  onclick="copyToClipboard('email-a')"
+                >
+                  <i class="far fa-copy mr-1"></i>本文をコピー
+                </button>
+              </div>
+              <div class="p-6 flex-1 overflow-y-auto">
+                <div class="mb-4">
+                  <p class="text-xs text-gray-400 font-bold mb-1">件名</p>
+                  <p
+                    class="text-sm font-bold text-gray-800 border-b border-gray-100 pb-2"
+                  >
+                    【分析レポート】Siena渋谷様の集客状況に関する独自調査のご共有
+                  </p>
+                </div>
+                <div
+                  class="text-sm text-gray-600 leading-relaxed whitespace-pre-wrap"
+                  id="email-a"
+                >
+                  〇〇様 突然のご連絡失礼いたします。 株式会社リクルート
+                  ホットペッパービューティー担当の〇〇と申します。
+                  この度、渋谷エリアの美容室市場調査を行う中で、
+                  Siena渋谷様の独自性（トレンド×ケアの両立）に大変魅力を感じ、
+                  勝手ながら周辺競合店との比較分析を行わせていただきました。
+                  分析の結果、貴店の強みをより活かせる「空白の市場ポジション」が見つかりましたので、
+                  ご興味があれば情報提供させていただけないでしょうか。
+                  ▼分析レポートの要点 1.
+                  渋谷エリアにおける貴店のポジショニング優位性 2.
+                  競合店がまだ着手していない「集客の穴場」について 3.
+                  想定される新規集客数のシミュレーション
+                  まずは情報提供のみでも構いません。
+                  お手すきの際に、本メールへの返信または下記までご連絡いただければ幸いです。
+                  何卒よろしくお願い申し上げます。
+                </div>
+              </div>
+            </div>
+            <!-- SMS/LINE Area -->
+            <div class="w-1/3 flex flex-col gap-4">
+              <div
+                class="bg-[#f3f4f6] rounded-xl shadow-sm border border-gray-200 flex flex-col h-full overflow-hidden relative"
+              >
+                <div
+                  class="bg-line-green px-4 py-3 flex justify-between items-center text-white"
+                >
+                  <div class="flex items-center font-bold text-sm">
+                    <i class="fab fa-line mr-2 text-lg"></i>LINE / SMS
+                  </div>
+                  <button
+                    class="copy-btn bg-white/20 hover:bg-white/30 text-white px-2 py-1 rounded text-[10px] font-bold transition-colors"
+                    onclick="copyToClipboard('sms-a')"
+                  >
+                    <i class="far fa-copy mr-1"></i>コピー
+                  </button>
+                </div>
+                <div
+                  class="p-4 flex-1 bg-[#7494c0] flex flex-col justify-start"
+                >
+                  <!-- Chat Bubble -->
+                  <div
+                    class="bg-white rounded-lg p-3 shadow-sm relative bubble-tail ml-2"
+                  >
+                    <p
+                      class="text-xs text-gray-800 leading-relaxed whitespace-pre-wrap"
+                      id="sms-a"
+                    >
+                      Siena渋谷 〇〇様 ホットペッパービューティーの〇〇です。
+                      先日お話しした「渋谷エリアの競合分析データ」がまとまりました。貴店に有利な市場データが出ておりますので、共有させてください。
+                      ご都合の良い日時はありますか？
+                    </p>
+                    <div class="text-[10px] text-gray-400 text-right mt-1">
+                      10:00
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Helper Text -->
+              <div class="bg-yellow-50 p-4 rounded-lg border border-yellow-100">
+                <p class="text-xs text-yellow-800 font-bold mb-1">
+                  <i class="fas fa-info-circle mr-1"></i>ポイント
+                </p>
+                <p class="text-xs text-yellow-700">
+                  「勝手に分析した」という熱量と、「良い結果が出た」というポジティブなフックで興味を喚起します。
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- Tab B Content -->
+          <div class="tab-content h-full gap-6" id="tab-b">
+            <!-- Email Area -->
+            <div
+              class="w-2/3 bg-white rounded-xl shadow-sm border border-gray-200 flex flex-col overflow-hidden"
+            >
+              <div
+                class="bg-gray-50 px-6 py-3 border-b border-gray-100 flex justify-between items-center"
+              >
+                <div class="flex items-center text-gray-600 font-bold text-sm">
+                  <i class="fas fa-envelope mr-2"></i>PCメール / DM
+                </div>
+                <button
+                  class="copy-btn bg-white border border-gray-300 text-gray-600 hover:text-hpb-orange hover:border-hpb-orange px-3 py-1 rounded text-xs font-bold transition-colors"
+                  onclick="copyToClipboard('email-b')"
+                >
+                  <i class="far fa-copy mr-1"></i>本文をコピー
+                </button>
+              </div>
+              <div class="p-6 flex-1 overflow-y-auto">
+                <div class="mb-4">
+                  <p class="text-xs text-gray-400 font-bold mb-1">件名</p>
+                  <p
+                    class="text-sm font-bold text-gray-800 border-b border-gray-100 pb-2"
+                  >
+                    【渋谷エリア調査】競合不在の「空白地帯」を発見しました
+                  </p>
+                </div>
+                <div
+                  class="text-sm text-gray-600 leading-relaxed whitespace-pre-wrap"
+                  id="email-b"
+                >
+                  Siena渋谷 〇〇様 お世話になっております。
+                  ホットペッパービューティーの〇〇です。
+                  先日ご挨拶させていただいた際、エリア内の競合過多について懸念されていましたが、
+                  改めて商圏分析を行ったところ、Siena渋谷様だけが狙える「ブルーオーシャン（空白地帯）」を発見いたしました。
+                  具体的には、「高単価な髪質改善」と「カジュアルなトレンド」の中間領域において、
+                  ニーズがあるにも関わらず、提供できているサロンが渋谷駅徒歩3分圏内に不在です。
+                  この領域を貴店の新メニューで抑えることができれば、
+                  広告費を抑えつつ、質の高い新規顧客を獲得できる可能性が高いです。
+                  具体的なポジショニングマップをご用意しましたので、
+                  一度ご確認いただけないでしょうか。
+                  ご検討のほど、よろしくお願いいたします。
+                </div>
+              </div>
+            </div>
+            <!-- SMS/LINE Area -->
+            <div class="w-1/3 flex flex-col gap-4">
+              <div
+                class="bg-[#f3f4f6] rounded-xl shadow-sm border border-gray-200 flex flex-col h-full overflow-hidden relative"
+              >
+                <div
+                  class="bg-line-green px-4 py-3 flex justify-between items-center text-white"
+                >
+                  <div class="flex items-center font-bold text-sm">
+                    <i class="fab fa-line mr-2 text-lg"></i>LINE / SMS
+                  </div>
+                  <button
+                    class="copy-btn bg-white/20 hover:bg-white/30 text-white px-2 py-1 rounded text-[10px] font-bold transition-colors"
+                    onclick="copyToClipboard('sms-b')"
+                  >
+                    <i class="far fa-copy mr-1"></i>コピー
+                  </button>
+                </div>
+                <div
+                  class="p-4 flex-1 bg-[#7494c0] flex flex-col justify-start"
+                >
+                  <div
+                    class="bg-white rounded-lg p-3 shadow-sm relative bubble-tail ml-2"
+                  >
+                    <p
+                      class="text-xs text-gray-800 leading-relaxed whitespace-pre-wrap"
+                      id="sms-b"
+                    >
+                      〇〇様、HPBの〇〇です。
+                      渋谷エリアで他店がまだ手をつけていない「集客の穴場」が見つかりました！Siena様の強みがそのまま活かせる場所です。
+                      マップにまとめたので、近日中に5分ほど共有させてください。
+                    </p>
+                    <div class="text-[10px] text-gray-400 text-right mt-1">
+                      14:20
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Tab C Content -->
+          <div class="tab-content h-full gap-6" id="tab-c">
+            <!-- Email Area -->
+            <div
+              class="w-2/3 bg-white rounded-xl shadow-sm border border-gray-200 flex flex-col overflow-hidden"
+            >
+              <div
+                class="bg-gray-50 px-6 py-3 border-b border-gray-100 flex justify-between items-center"
+              >
+                <div class="flex items-center text-gray-600 font-bold text-sm">
+                  <i class="fas fa-envelope mr-2"></i>PCメール / DM
+                </div>
+                <button
+                  class="copy-btn bg-white border border-gray-300 text-gray-600 hover:text-hpb-orange hover:border-hpb-orange px-3 py-1 rounded text-xs font-bold transition-colors"
+                  onclick="copyToClipboard('email-c')"
+                >
+                  <i class="far fa-copy mr-1"></i>本文をコピー
+                </button>
+              </div>
+              <div class="p-6 flex-1 overflow-y-auto">
+                <div class="mb-4">
+                  <p class="text-xs text-gray-400 font-bold mb-1">件名</p>
+                  <p
+                    class="text-sm font-bold text-gray-800 border-b border-gray-100 pb-2"
+                  >
+                    先日の件：貴店に最適な「推奨メニュー構成案」を作成しました
+                  </p>
+                </div>
+                <div
+                  class="text-sm text-gray-600 leading-relaxed whitespace-pre-wrap"
+                  id="email-c"
+                >
+                  Siena渋谷 〇〇様 いつも大変お世話になっております。
+                  ホットペッパービューティーの〇〇です。
+                  先日は貴重なお時間をいただき、ありがとうございました。
+                  伺った「リピート率向上」と「客単価アップ」の課題に対し、
+                  他店の成功事例をベースにしたSiena渋谷様向けの『推奨メニュー構成案』を作成しました。
+                  特に、貴店の強みである「デザインカラー」を入り口に、
+                  自然に「髪質改善」へ誘導するためのセットメニューと価格設定をシミュレーションしております。
+                  ▼ご提案内容（ドラフト）
+                  ・新規集客用：トレンド重視のフックメニュー
+                  ・リピート用：2回目・3回目来店を促すステップアップクーポン
+                  ・単価UP用：＋2,000円を自然に生み出すオプション設計
+                  たたき台としてご覧いただき、ご意見を伺えればと思います。
+                  来週のご都合はいかがでしょうか。
+                </div>
+              </div>
+            </div>
+            <!-- SMS/LINE Area -->
+            <div class="w-1/3 flex flex-col gap-4">
+              <div
+                class="bg-[#f3f4f6] rounded-xl shadow-sm border border-gray-200 flex flex-col h-full overflow-hidden relative"
+              >
+                <div
+                  class="bg-line-green px-4 py-3 flex justify-between items-center text-white"
+                >
+                  <div class="flex items-center font-bold text-sm">
+                    <i class="fab fa-line mr-2 text-lg"></i>LINE / SMS
+                  </div>
+                  <button
+                    class="copy-btn bg-white/20 hover:bg-white/30 text-white px-2 py-1 rounded text-[10px] font-bold transition-colors"
+                    onclick="copyToClipboard('sms-c')"
+                  >
+                    <i class="far fa-copy mr-1"></i>コピー
+                  </button>
+                </div>
+                <div
+                  class="p-4 flex-1 bg-[#7494c0] flex flex-col justify-start"
+                >
+                  <div
+                    class="bg-white rounded-lg p-3 shadow-sm relative bubble-tail ml-2"
+                  >
+                    <p
+                      class="text-xs text-gray-800 leading-relaxed whitespace-pre-wrap"
+                      id="sms-c"
+                    >
+                      〇〇様、先日はありがとうございました！
+                      伺った課題を解決する「メニュー構成案」を作ってみました。単価を自然に上げる仕組みです。
+                      来週あたり、感想を聞かせていただけませんか？
+                    </p>
+                    <div class="text-[10px] text-gray-400 text-right mt-1">
+                      18:05
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Tab D Content -->
+          <div class="tab-content h-full gap-6" id="tab-d">
+            <!-- Email Area -->
+            <div
+              class="w-2/3 bg-white rounded-xl shadow-sm border border-gray-200 flex flex-col overflow-hidden"
+            >
+              <div
+                class="bg-gray-50 px-6 py-3 border-b border-gray-100 flex justify-between items-center"
+              >
+                <div class="flex items-center text-gray-600 font-bold text-sm">
+                  <i class="fas fa-envelope mr-2"></i>PCメール / DM
+                </div>
+                <button
+                  class="copy-btn bg-white border border-gray-300 text-gray-600 hover:text-hpb-orange hover:border-hpb-orange px-3 py-1 rounded text-xs font-bold transition-colors"
+                  onclick="copyToClipboard('email-d')"
+                >
+                  <i class="far fa-copy mr-1"></i>本文をコピー
+                </button>
+              </div>
+              <div class="p-6 flex-1 overflow-y-auto">
+                <div class="mb-4">
+                  <p class="text-xs text-gray-400 font-bold mb-1">件名</p>
+                  <p
+                    class="text-sm font-bold text-gray-800 border-b border-gray-100 pb-2"
+                  >
+                    【データ共有】渋谷エリアの20代集客トレンドと単価推移について
+                  </p>
+                </div>
+                <div
+                  class="text-sm text-gray-600 leading-relaxed whitespace-pre-wrap"
+                  id="email-d"
+                >
+                  Siena渋谷 〇〇様 お世話になっております。
+                  ホットペッパービューティーの〇〇です。
+                  弊社で保有している最新の予約データより、
+                  渋谷エリアにおける「20代顧客」の動向に大きな変化が見られましたので共有いたします。
+                  昨年と比較し、「カラー単体」での予約が減少し、
+                  代わりに「●●●」とのセット予約が急増している傾向があります。
+                  貴店がターゲットとされている客層と合致しており、
+                  このトレンドを早期に取り入れることで、他店への流出を防げる可能性があります。
+                  詳細な数字データをまとめた資料がございます。
+                  今後のサロン運営の参考にしていただければと思いますので、
+                  一度お時間をいただけますでしょうか。
+                </div>
+              </div>
+            </div>
+            <!-- SMS/LINE Area -->
+            <div class="w-1/3 flex flex-col gap-4">
+              <div
+                class="bg-[#f3f4f6] rounded-xl shadow-sm border border-gray-200 flex flex-col h-full overflow-hidden relative"
+              >
+                <div
+                  class="bg-line-green px-4 py-3 flex justify-between items-center text-white"
+                >
+                  <div class="flex items-center font-bold text-sm">
+                    <i class="fab fa-line mr-2 text-lg"></i>LINE / SMS
+                  </div>
+                  <button
+                    class="copy-btn bg-white/20 hover:bg-white/30 text-white px-2 py-1 rounded text-[10px] font-bold transition-colors"
+                    onclick="copyToClipboard('sms-d')"
+                  >
+                    <i class="far fa-copy mr-1"></i>コピー
+                  </button>
+                </div>
+                <div
+                  class="p-4 flex-1 bg-[#7494c0] flex flex-col justify-start"
+                >
+                  <div
+                    class="bg-white rounded-lg p-3 shadow-sm relative bubble-tail ml-2"
+                  >
+                    <p
+                      class="text-xs text-gray-800 leading-relaxed whitespace-pre-wrap"
+                      id="sms-d"
+                    >
+                      〇〇様
+                      渋谷エリアの最新トレンドデータが出ました！20代のお客様の動きが昨年とガラッと変わっています。
+                      Siena様の運営にも関わる内容なので、早めに共有したいです。
+                      5分だけお電話可能でしょうか？
+                    </p>
+                    <div class="text-[10px] text-gray-400 text-right mt-1">
+                      11:30
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Toast Notification -->
+      <div class="toast" id="toast">
+        <i class="fas fa-check-circle mr-2 text-green-400"></i>コピーしました
+      </div>
+    </div>
+    <script>
+      function switchTab(tabId) {
+        // Hide all contents
+        const contents = document.querySelectorAll(".tab-content");
+        contents.forEach((content) => content.classList.remove("active"));
+
+        // Deactivate all buttons
+        const buttons = document.querySelectorAll(".tab-btn");
+        buttons.forEach((btn) => btn.classList.remove("active"));
+
+        // Show target content
+        document.getElementById(tabId).classList.add("active");
+
+        // Activate target button
+        // Simple way to find which button was clicked is not passed, so we rely on order or update calling logic.
+        // Or we can just use event.currentTarget if passed.
+        // For simplicity in this static template, we'll re-select based on index or just let the button handle style if passed 'this'.
+        // Here we use a simpler approach: finding the button that calls this function.
+        const targetBtn = Array.from(buttons).find((btn) =>
+          btn.getAttribute("onclick").includes(tabId)
+        );
+        if (targetBtn) targetBtn.classList.add("active");
+      }
+
+      function copyToClipboard(elementId) {
+        const text = document.getElementById(elementId).innerText;
+        navigator.clipboard
+          .writeText(text)
+          .then(() => {
+            showToast();
+          })
+          .catch((err) => {
+            console.error("Failed to copy: ", err);
+            // Fallback for older browsers
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand("Copy");
+            textArea.remove();
+            showToast();
+          });
+      }
+
+      function showToast() {
+        const toast = document.getElementById("toast");
+        toast.classList.add("show");
+        setTimeout(() => {
+          toast.classList.remove("show");
+        }, 2000);
+      }
+    </script>
+  </body>
+</html>

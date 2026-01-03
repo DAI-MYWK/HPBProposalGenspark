@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>付録・根拠データ表</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Noto Sans JP", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f3f4f6;
+        width: 1280px;
+        height: 720px;
+        overflow: hidden;
+      }
+      .text-hpb-orange {
+        color: #ff6b35;
+      }
+      .bg-hpb-orange {
+        background-color: #ff6b35;
+      }
+      .border-hpb-orange {
+        border-color: #ff6b35;
+      }
+      .bg-hpb-light {
+        background-color: #fff0e9;
+      }
+
+      .slide-container {
+        width: 1280px;
+        height: 720px;
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        position: relative;
+      }
+
+      .data-table th {
+        background-color: #f9fafb;
+        color: #4b5563;
+        font-weight: 700;
+        text-align: left;
+        padding: 12px;
+        border-bottom: 2px solid #e5e7eb;
+        font-size: 0.75rem;
+      }
+      .data-table td {
+        padding: 12px;
+        border-bottom: 1px solid #e5e7eb;
+        color: #1f2937;
+        font-size: 0.8rem;
+      }
+      .data-table tr:last-child td {
+        border-bottom: none;
+      }
+
+      .source-box {
+        background-color: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+      }
+
+      .citation-box {
+        font-family: "Courier New", monospace; /* Monospace for raw data feel */
+        background-color: #fff;
+        border: 1px dashed #cbd5e1;
+        border-radius: 6px;
+        padding: 10px;
+        font-size: 0.7rem;
+        color: #64748b;
+        line-height: 1.4;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide-container">
+      <!-- Header -->
+      <div
+        class="h-20 flex items-center justify-between px-16 border-b border-gray-100 bg-white z-10"
+      >
+        <div class="flex items-center space-x-2">
+          <div
+            class="bg-gray-800 w-8 h-8 rounded-md flex items-center justify-center text-white"
+          >
+            <i class="fas fa-database text-sm"></i>
+          </div>
+          <p class="text-gray-500 font-bold text-sm tracking-wider">
+            APPENDIX / DATA SOURCE
+          </p>
+        </div>
+        <p class="text-gray-400 text-sm">付録：根拠データ・引用元</p>
+      </div>
+      <!-- Main Content -->
+      <div
+        class="flex-1 px-16 py-8 bg-gray-50 overflow-hidden flex flex-col gap-6"
+      >
+        <div class="flex items-start justify-between">
+          <div>
+            <h2 class="text-2xl font-bold text-gray-800 mb-2">
+              分析データの出典と定義
+            </h2>
+            <p class="text-sm text-gray-600">
+              本提案書で使用しているベンチマークデータおよび市場分析の根拠情報は以下の通りです。<br />
+              詳細な数値確認や最新情報の照会にご活用ください。
+            </p>
+          </div>
+          <div
+            class="bg-hpb-light border border-hpb-orange rounded-lg px-4 py-2 flex items-center"
+          >
+            <i class="fas fa-calendar-check text-hpb-orange mr-2"></i>
+            <p class="text-xs font-bold text-gray-700">
+              データ取得日： <span class="text-hpb-orange">2026年1月3日</span>
+            </p>
+          </div>
+        </div>
+        <!-- Content Grid -->
+        <div class="grid grid-cols-2 gap-8 flex-1">
+          <!-- Left Column: Source Data -->
+          <div class="flex flex-col gap-6">
+            <!-- Benchmark Info -->
+            <div
+              class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden"
+            >
+              <div
+                class="bg-gray-50 px-4 py-3 border-b border-gray-200 flex justify-between items-center"
+              >
+                <h3 class="font-bold text-gray-700 text-sm flex items-center">
+                  <i class="fas fa-store text-gray-400 mr-2"></i
+                  >ベンチマークサロン情報
+                </h3>
+              </div>
+              <table class="w-full data-table">
+                <tbody>
+                  <tr>
+                    <th class="w-32">サロン名</th>
+                    <td class="font-bold">シエナ 渋谷 (Siena)</td>
+                  </tr>
+                  <tr>
+                    <th>掲載URL</th>
+                    <td>
+                      <a
+                        class="text-blue-500 hover:underline break-all"
+                        href="https://beauty.hotpepper.jp/slnH000366568/"
+                      >
+                        https://beauty.hotpepper.jp/slnH000366568/
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>エリア区分</th>
+                    <td>渋谷・青山・表参道・原宿</td>
+                  </tr>
+                  <tr>
+                    <th>主要カテゴリ</th>
+                    <td>デザインカラー / 髪質改善 / メンズカジュアル</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- Metric Definitions -->
+            <div
+              class="bg-white rounded-xl shadow-sm border border-gray-200 p-5"
+            >
+              <h3
+                class="font-bold text-gray-700 text-sm mb-3 flex items-center"
+              >
+                <i class="fas fa-book text-gray-400 mr-2"></i>比較指標の定義
+              </h3>
+              <ul class="space-y-3">
+                <li class="flex items-start">
+                  <span
+                    class="bg-gray-100 text-gray-500 text-[10px] font-bold px-2 py-0.5 rounded mr-2 mt-0.5"
+                    >平均単価</span
+                  >
+                  <p class="text-xs text-gray-600">
+                    各サロンの主要クーポン価格（上位3件）とメニュー定価の中央値から算出した推定値であり、実際の客単価とは異なる場合があります。
+                  </p>
+                </li>
+                <li class="flex items-start">
+                  <span
+                    class="bg-gray-100 text-gray-500 text-[10px] font-bold px-2 py-0.5 rounded mr-2 mt-0.5"
+                    >競合範囲</span
+                  >
+                  <p class="text-xs text-gray-600">
+                    「徒歩圏内」はGoogle
+                    Maps基準で徒歩5分以内、「商圏」は電車移動を含めた30分圏内の主要商業エリア（代官山・銀座等）を指します。
+                  </p>
+                </li>
+                <li class="flex items-start">
+                  <span
+                    class="bg-gray-100 text-gray-500 text-[10px] font-bold px-2 py-0.5 rounded mr-2 mt-0.5"
+                    >トレンド性</span
+                  >
+                  <p class="text-xs text-gray-600">
+                    掲載スタイル写真の更新頻度、および「イルミナ」「韓国風」等のトレンドキーワードの含有率に基づき独自にスコアリング。
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- Right Column: Raw Data & Disclaimer -->
+          <div class="flex flex-col gap-6">
+            <!-- Citation Data -->
+            <div
+              class="bg-white rounded-xl shadow-sm border border-gray-200 p-5 flex-1"
+            >
+              <h3
+                class="font-bold text-gray-700 text-sm mb-3 flex items-center"
+              >
+                <i class="fas fa-quote-right text-gray-400 mr-2"></i
+                >主要クーポン原文（分析元データ）
+              </h3>
+              <div class="citation-box h-full overflow-y-auto max-h-48 mb-4">
+                <p class="mb-2">&gt; COUPON_ID: CP00000006052837</p>
+                <p class="mb-2">
+                  【新規】イルミナカラー+最新.3STEPトリートメント
+                </p>
+                <p class="mb-2">Price: ¥10,500 → ¥6,400</p>
+                <p class="mb-4">Cond: 指定なし / 全員 / hot pepperを見た！</p>
+                <p class="mb-2">&gt; COUPON_ID: CP00000006052862</p>
+                <p class="mb-2">
+                  【新規】艶々ハイトーンカラー ケアブリーチ+カラー
+                </p>
+                <p class="mb-2">Price: ¥15,500 → ¥12,900</p>
+                <p class="mb-4">Cond: 指定なし / 全員 / hotpepperを見た！</p>
+                <p class="mb-2">&gt; COUPON_ID: CP00000007706622</p>
+                <p class="mb-2">【平日限定！】カット＋カラー＋トリートメント</p>
+                <p class="mb-2">Price: ¥12,500 → ¥5,900</p>
+                <p class="mb-0">Cond: 平日12時～21時 / 全員 / 併用不可</p>
+              </div>
+              <p class="text-[10px] text-gray-400 text-right">
+                ※原文ママ引用。レイアウト都合上、一部改行等は調整。
+              </p>
+            </div>
+            <!-- Placeholder for Actual Data -->
+            <div
+              class="bg-blue-50 border-2 border-dashed border-blue-200 rounded-xl p-5 relative group cursor-pointer hover:bg-blue-100 transition-colors"
+            >
+              <div
+                class="absolute -top-3 left-4 bg-blue-500 text-white text-[10px] font-bold px-2 py-0.5 rounded"
+              >
+                編集用エリア
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                  <div
+                    class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-500 mr-3"
+                  >
+                    <i class="fas fa-file-excel"></i>
+                  </div>
+                  <div>
+                    <h4 class="text-sm font-bold text-blue-800">
+                      実データ差替え欄
+                    </h4>
+                    <p class="text-xs text-blue-600">
+                      クライアント提示用の生データや、追加のリサーチ資料がある場合はここに貼り付けてください。
+                    </p>
+                  </div>
+                </div>
+                <i
+                  class="fas fa-plus text-blue-300 group-hover:text-blue-500 text-xl"
+                ></i>
+              </div>
+            </div>
+            <!-- Disclaimer -->
+            <div class="mt-auto">
+              <p class="text-[10px] text-gray-400 leading-relaxed">
+                【免責事項】<br />
+                本資料に記載されている他社サロンの価格・メニュー情報は、上記取得日時点での公開情報に基づくものです。各サロンの戦略変更等により、現在の情報と異なる場合があります。施策実行の際は、必ず最新の掲載状況をご確認ください。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

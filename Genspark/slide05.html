@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>価格帯の可視化｜Siena渋谷</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      body {
+        font-family: "Noto Sans JP", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f3f4f6;
+        width: 1280px;
+        height: 720px;
+        overflow: hidden;
+      }
+      .hpb-orange {
+        color: #ff6b35;
+      }
+      .bg-hpb-orange {
+        background-color: #ff6b35;
+      }
+      .border-hpb-orange {
+        border-color: #ff6b35;
+      }
+      .text-hpb-orange {
+        color: #ff6b35;
+      }
+      .bg-hpb-orange-light {
+        background-color: #fff0e9;
+      }
+
+      .slide-container {
+        width: 1280px;
+        height: 720px;
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        position: relative;
+      }
+
+      .chart-container {
+        position: relative;
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide-container">
+      <!-- Header -->
+      <div
+        class="h-20 flex items-center justify-between px-16 border-b border-gray-100 bg-white z-10"
+      >
+        <div class="flex items-center space-x-4">
+          <div
+            class="bg-hpb-orange w-8 h-8 rounded-md flex items-center justify-center text-white"
+          >
+            <span class="font-bold text-sm">05</span>
+          </div>
+          <h1 class="text-xl font-bold text-gray-800 tracking-wide">
+            価格帯の可視化｜Siena渋谷
+          </h1>
+        </div>
+        <div class="flex items-center space-x-2">
+          <i class="fas fa-chart-bar text-gray-400"></i>
+          <p class="text-gray-400 text-sm font-medium">BENCHMARK ANALYSIS</p>
+        </div>
+      </div>
+      <!-- Main Content -->
+      <div class="flex-1 flex px-16 py-10 gap-10 overflow-hidden">
+        <!-- Left Side: Chart Area -->
+        <div class="w-7/12 flex flex-col">
+          <div class="mb-4">
+            <h2 class="text-2xl font-bold text-gray-800 mb-2">
+              メニュー別 価格レンジ分析
+            </h2>
+            <p class="text-gray-500 text-sm">
+              最低価格〜最高価格の幅を表示。エントリーからハイエンドまでの階段設計を確認。
+            </p>
+          </div>
+          <div
+            class="flex-1 bg-white rounded-xl border border-gray-100 p-4 shadow-sm relative"
+          >
+            <div class="chart-container">
+              <canvas id="priceRangeChart"></canvas>
+            </div>
+          </div>
+        </div>
+        <!-- Right Side: Analysis & Insights -->
+        <div class="w-5/12 flex flex-col justify-between">
+          <!-- Card 1: Entry Strategy -->
+          <div
+            class="bg-blue-50 rounded-xl p-6 border-l-4 border-blue-500 shadow-sm mb-4"
+          >
+            <div class="flex items-start mb-3">
+              <div
+                class="bg-blue-500 text-white w-8 h-8 rounded-full flex items-center justify-center mr-3 flex-shrink-0"
+              >
+                <i class="fas fa-door-open text-sm"></i>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-gray-800">
+                  強力なエントリー設計
+                </h3>
+                <p class="text-blue-600 font-bold text-sm mt-1">
+                  カット+カラー+Tr ¥5,900〜
+                </p>
+              </div>
+            </div>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              学生・若年層をターゲットに、平日限定や学割を駆使して「5,000円台」の見せ金を用意。心理的な来店ハードルを極限まで下げている。
+            </p>
+          </div>
+          <!-- Card 2: Standard/Trend -->
+          <div
+            class="bg-hpb-orange-light rounded-xl p-6 border-l-4 border-hpb-orange shadow-sm mb-4"
+          >
+            <div class="flex items-start mb-3">
+              <div
+                class="bg-hpb-orange text-white w-8 h-8 rounded-full flex items-center justify-center mr-3 flex-shrink-0"
+              >
+                <i class="fas fa-star text-sm"></i>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-gray-800">
+                  主力トレンドメニュー
+                </h3>
+                <p class="text-hpb-orange font-bold text-sm mt-1">
+                  イルミナ+Tr ¥6,400
+                </p>
+              </div>
+            </div>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              人気のイルミナカラーも「+500円」程度のアップチャージ感で提供。安すぎず高すぎない絶妙な価格設定で、満足度と単価のバランスを維持。
+            </p>
+          </div>
+          <!-- Card 3: High-End/LTV -->
+          <div
+            class="bg-gray-50 rounded-xl p-6 border-l-4 border-gray-400 shadow-sm"
+          >
+            <div class="flex items-start mb-3">
+              <div
+                class="bg-gray-400 text-white w-8 h-8 rounded-full flex items-center justify-center mr-3 flex-shrink-0"
+              >
+                <i class="fas fa-gem text-sm"></i>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-gray-800">
+                  高単価への引き上げ
+                </h3>
+                <p class="text-gray-600 font-bold text-sm mt-1">
+                  髪質改善 ¥8,500〜¥16,800
+                </p>
+              </div>
+            </div>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              悩み解決型のメニューは高単価でも需要がある。「安さ」で集めて「質」で定着させる、典型的なLTV最大化モデル。
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Footer -->
+      <div class="absolute bottom-4 right-16 text-right">
+        <p class="text-xs text-gray-400">
+          ※価格は2026年1月時点のホットペッパービューティー掲載情報に基づく（税込）
+        </p>
+      </div>
+    </div>
+    <script>
+      const ctx = document.getElementById("priceRangeChart").getContext("2d");
+
+      // Data structure: [min, max]
+      const data = {
+        labels: [
+          "メンズカット+スパ",
+          "カット(一般)",
+          "カット+カラー+Tr",
+          "イルミナ+Tr",
+          "ダブルカラー",
+          "髪質改善",
+        ],
+        datasets: [
+          {
+            label: "価格レンジ",
+            data: [
+              [4000, 4000], // メンズカット+スパ
+              [4200, 6100], // カット
+              [5900, 8900], // カット+カラー+Tr
+              [6400, 6400], // イルミナ+Tr (一点価格)
+              [12900, 12900], // ダブルカラー
+              [8500, 16800], // 髪質改善
+            ],
+            backgroundColor: [
+              "rgba(75, 192, 192, 0.6)", // メンズ: Green/Teal
+              "rgba(201, 203, 207, 0.6)", // カット: Grey
+              "rgba(255, 107, 53, 0.8)", // カ+カ+Tr: HPB Orange (Main)
+              "rgba(255, 159, 64, 0.6)", // イルミナ: Light Orange
+              "rgba(153, 102, 255, 0.6)", // ダブルカラー: Purple
+              "rgba(255, 99, 132, 0.6)", // 髪質改善: Red/Pink
+            ],
+            borderColor: [
+              "rgba(75, 192, 192, 1)",
+              "rgba(201, 203, 207, 1)",
+              "rgba(255, 107, 53, 1)",
+              "rgba(255, 159, 64, 1)",
+              "rgba(153, 102, 255, 1)",
+              "rgba(255, 99, 132, 1)",
+            ],
+            borderWidth: 1,
+            borderSkipped: false,
+            barPercentage: 0.6,
+            categoryPercentage: 0.8,
+          },
+        ],
+      };
+
+      const config = {
+        type: "bar",
+        data: data,
+        options: {
+          indexAxis: "y", // Horizontal bar chart
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: false,
+            },
+            tooltip: {
+              callbacks: {
+                label: function (context) {
+                  const raw = context.raw;
+                  if (Array.isArray(raw)) {
+                    if (raw[0] === raw[1]) {
+                      return `¥${raw[0].toLocaleString()}`;
+                    }
+                    return `¥${raw[0].toLocaleString()} 〜 ¥${raw[1].toLocaleString()}`;
+                  }
+                  return `¥${raw.toLocaleString()}`;
+                },
+              },
+            },
+            datalabels: {
+              // If datalabels plugin was available, we could use it here.
+              // Since we rely on Chart.js only, we use tooltips mainly.
+            },
+          },
+          scales: {
+            x: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: "価格 (円)",
+                color: "#9ca3af",
+                font: {
+                  family: "'Noto Sans JP', sans-serif",
+                },
+              },
+              ticks: {
+                font: {
+                  family: "'Noto Sans JP', sans-serif",
+                },
+                callback: function (value) {
+                  return "¥" + value.toLocaleString();
+                },
+              },
+              grid: {
+                borderDash: [2, 2],
+                color: "#f3f4f6",
+              },
+              suggestedMax: 18000,
+            },
+            y: {
+              ticks: {
+                font: {
+                  family: "'Noto Sans JP', sans-serif",
+                  weight: "bold",
+                  size: 12,
+                },
+                color: "#374151",
+              },
+              grid: {
+                display: false,
+              },
+            },
+          },
+        },
+      };
+
+      new Chart(ctx, config);
+    </script>
+  </body>
+</html>

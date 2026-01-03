@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>ベンチマーク概要｜Siena渋谷</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Noto Sans JP", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f3f4f6;
+        width: 1280px;
+        height: 720px;
+        overflow: hidden;
+      }
+      .hpb-orange {
+        color: #ff6b35;
+      }
+      .bg-hpb-orange {
+        background-color: #ff6b35;
+      }
+      .border-hpb-orange {
+        border-color: #ff6b35;
+      }
+      .text-hpb-orange {
+        color: #ff6b35;
+      }
+      .bg-hpb-orange-light {
+        background-color: #fff0e9;
+      }
+      .bg-hpb-orange-super-light {
+        background-color: #fff9f6;
+      }
+      .slide-container {
+        width: 1280px;
+        height: 720px;
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        position: relative;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      }
+      .feature-tag {
+        background-color: #fff0e9;
+        color: #ff6b35;
+        padding: 4px 12px;
+        border-radius: 9999px;
+        font-weight: 700;
+        font-size: 0.875rem;
+        display: inline-flex;
+        align-items: center;
+      }
+      .menu-card {
+        transition: all 0.2s ease;
+      }
+      .menu-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide-container">
+      <!-- Header -->
+      <div
+        class="h-16 flex items-center justify-between px-12 border-b border-gray-100 bg-white z-10"
+      >
+        <div class="flex items-center space-x-2">
+          <div
+            class="bg-hpb-orange w-6 h-6 rounded flex items-center justify-center text-white"
+          >
+            <i class="fas fa-search text-xs"></i>
+          </div>
+          <p class="text-gray-500 font-bold text-sm tracking-wider">
+            BENCHMARK ANALYSIS
+          </p>
+        </div>
+        <div class="flex items-center">
+          <span
+            class="bg-gray-100 text-gray-600 px-3 py-1 rounded text-xs font-bold mr-3"
+            >CASE STUDY</span
+          >
+          <p class="text-gray-400 text-xs">2026.01.03</p>
+        </div>
+      </div>
+      <!-- Main Content -->
+      <div class="flex-1 flex px-12 py-8 bg-gray-50">
+        <!-- Left Column: Basic Info & Strengths -->
+        <div class="w-1/3 flex flex-col space-y-6 pr-6">
+          <!-- Salon Identity -->
+          <div
+            class="bg-white p-6 rounded-xl shadow-sm border-t-4 border-hpb-orange"
+          >
+            <div class="flex items-start justify-between mb-4">
+              <div>
+                <p class="text-xs text-gray-400 font-bold tracking-wider mb-1">
+                  TARGET BENCHMARK
+                </p>
+                <h1 class="text-3xl font-bold text-gray-800 leading-tight">
+                  Siena 渋谷
+                </h1>
+                <p class="text-sm text-gray-500 mt-1">シエナ シブヤ</p>
+              </div>
+              <div class="bg-gray-100 p-2 rounded-lg text-gray-400">
+                <i class="fas fa-store text-2xl"></i>
+              </div>
+            </div>
+            <div class="space-y-3 border-t border-gray-100 pt-4">
+              <div class="flex items-center text-gray-600">
+                <i
+                  class="fas fa-map-marker-alt w-6 text-hpb-orange text-center mr-2"
+                ></i>
+                <p class="text-sm font-medium">渋谷駅 徒歩2-3分</p>
+              </div>
+              <div class="flex items-center text-gray-600">
+                <i
+                  class="fas fa-clock w-6 text-hpb-orange text-center mr-2"
+                ></i>
+                <p class="text-sm font-medium">平日 11:00～22:00（夜間営業）</p>
+              </div>
+              <div class="flex items-center text-gray-600">
+                <i
+                  class="fas fa-chair w-6 text-hpb-orange text-center mr-2"
+                ></i>
+                <p class="text-sm font-medium">セット面 8席 / トレンド特化</p>
+              </div>
+            </div>
+          </div>
+          <!-- Key Features / Strengths -->
+          <div class="bg-white p-6 rounded-xl shadow-sm flex-1">
+            <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center">
+              <span class="w-1 h-6 bg-hpb-orange mr-3 rounded-full"></span>
+              強み・ポジショニング
+            </h3>
+            <div class="space-y-4">
+              <div>
+                <p class="text-sm text-gray-500 mb-2 font-bold">コンセプト</p>
+                <p class="text-xl font-bold text-hpb-orange leading-snug">
+                  「トレンド×センス×高い技術力」<br />
+                  <span class="text-gray-800 text-base">を低価格で提供</span>
+                </p>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <span class="feature-tag"
+                  ><i class="fas fa-check mr-1"></i>高技術×低価格</span
+                >
+                <span class="feature-tag"
+                  ><i class="fas fa-camera mr-1"></i>SNS映え</span
+                >
+                <span class="feature-tag"
+                  ><i class="fas fa-graduation-cap mr-1"></i>学割U24</span
+                >
+                <span class="feature-tag"
+                  ><i class="fas fa-moon mr-1"></i>22時まで営業</span
+                >
+              </div>
+              <div class="bg-hpb-orange-super-light p-4 rounded-lg mt-2">
+                <p class="text-xs text-gray-500 font-bold mb-1">TARGET USER</p>
+                <div class="flex items-center space-x-2">
+                  <i class="fas fa-user-friends text-hpb-orange"></i>
+                  <p class="text-sm font-bold text-gray-700">
+                    10代後半〜20代 学生・若手社会人
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Right Column: Menu Analysis -->
+        <div class="w-2/3 flex flex-col pl-2">
+          <div class="mb-4 flex items-end justify-between">
+            <div>
+              <h2 class="text-2xl font-bold text-gray-800">主力メニュー構成</h2>
+              <p class="text-sm text-gray-500 mt-1">
+                集客の柱となっている5つのコアメニューカテゴリー
+              </p>
+            </div>
+            <div
+              class="bg-white px-4 py-2 rounded-full shadow-sm border border-gray-200"
+            >
+              <p class="text-xs font-bold text-gray-500">
+                <i class="fas fa-chart-pie text-hpb-orange mr-1"></i>
+                売上構成比（推定）: カラー40% / 髪質改善30% / 他30%
+              </p>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-4 flex-1">
+            <!-- Menu Item 1 -->
+            <div
+              class="menu-card bg-white p-5 rounded-xl shadow-sm border-l-4 border-blue-400 relative overflow-hidden"
+            >
+              <div class="absolute right-0 top-0 p-3 opacity-10">
+                <i class="fas fa-palette text-6xl text-blue-400"></i>
+              </div>
+              <h4 class="text-lg font-bold text-gray-800 mb-2">
+                デザインカラー
+              </h4>
+              <p
+                class="text-xs font-bold text-blue-500 mb-2 bg-blue-50 inline-block px-2 py-1 rounded"
+              >
+                イルミナ / 透明感 / ダブルカラー
+              </p>
+              <p class="text-sm text-gray-600 leading-relaxed">
+                「ブリーチなし透明感」「外国人風」をキーワードに、トレンド色を低価格で提供。学生への訴求力が高い。
+              </p>
+            </div>
+            <!-- Menu Item 2 -->
+            <div
+              class="menu-card bg-white p-5 rounded-xl shadow-sm border-l-4 border-pink-400 relative overflow-hidden"
+            >
+              <div class="absolute right-0 top-0 p-3 opacity-10">
+                <i class="fas fa-sparkles text-6xl text-pink-400"></i>
+              </div>
+              <h4 class="text-lg font-bold text-gray-800 mb-2">
+                髪質改善・ケア
+              </h4>
+              <p
+                class="text-xs font-bold text-pink-500 mb-2 bg-pink-50 inline-block px-2 py-1 rounded"
+              >
+                TOKIO / 酸熱トリートメント
+              </p>
+              <p class="text-sm text-gray-600 leading-relaxed">
+                「ダメージレス」「艶髪」を強調。カラーとの同時施術や、単価アップのフック商材として機能。
+              </p>
+            </div>
+            <!-- Menu Item 3 -->
+            <div
+              class="menu-card bg-white p-5 rounded-xl shadow-sm border-l-4 border-green-400 relative overflow-hidden"
+            >
+              <div class="absolute right-0 top-0 p-3 opacity-10">
+                <i class="fas fa-cut text-6xl text-green-400"></i>
+              </div>
+              <h4 class="text-lg font-bold text-gray-800 mb-2">
+                トレンドカット
+              </h4>
+              <p
+                class="text-xs font-bold text-green-500 mb-2 bg-green-50 inline-block px-2 py-1 rounded"
+              >
+                レイヤー / ショート / ボブ
+              </p>
+              <p class="text-sm text-gray-600 leading-relaxed">
+                顔周りの似合わせや、韓国風レイヤーなど、SNSで話題のスタイルスタイルを前面に打ち出す。
+              </p>
+            </div>
+            <!-- Menu Item 4 -->
+            <div
+              class="menu-card bg-white p-5 rounded-xl shadow-sm border-l-4 border-purple-400 relative overflow-hidden"
+            >
+              <div class="absolute right-0 top-0 p-3 opacity-10">
+                <i class="fas fa-mars text-6xl text-purple-400"></i>
+              </div>
+              <h4 class="text-lg font-bold text-gray-800 mb-2">
+                メンズスタイル
+              </h4>
+              <p
+                class="text-xs font-bold text-purple-500 mb-2 bg-purple-50 inline-block px-2 py-1 rounded"
+              >
+                ツイストスパイラル / 波巻き
+              </p>
+              <p class="text-sm text-gray-600 leading-relaxed">
+                「メンズのプロ在籍」を謳い、パーマ比率の高いメンズ客層を取り込む。平日夜の稼働にも貢献。
+              </p>
+            </div>
+            <!-- Menu Item 5 (Full Width) -->
+            <div
+              class="menu-card bg-white p-5 rounded-xl shadow-sm border-l-4 border-yellow-400 col-span-2 relative overflow-hidden flex items-center"
+            >
+              <div class="mr-6">
+                <div
+                  class="bg-yellow-100 w-12 h-12 rounded-full flex items-center justify-center text-yellow-500"
+                >
+                  <i class="fas fa-magic text-xl"></i>
+                </div>
+              </div>
+              <div>
+                <h4 class="text-lg font-bold text-gray-800 mb-1">
+                  縮毛矯正・ストレート
+                </h4>
+                <p
+                  class="text-xs font-bold text-yellow-600 mb-1 bg-yellow-50 inline-block px-2 py-1 rounded"
+                >
+                  コスメ薬剤 / ダメージレス
+                </p>
+                <p class="text-sm text-gray-600">
+                  「自然な仕上がり」を重視し、高単価メニューとして機能。クセ毛の悩みを解決するアプローチ。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Footer Info -->
+      <div class="absolute bottom-4 right-12 text-right">
+        <p class="text-xs text-gray-400 font-medium">
+          ※ホットペッパービューティー掲載情報（2026年1月時点）に基づく分析
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

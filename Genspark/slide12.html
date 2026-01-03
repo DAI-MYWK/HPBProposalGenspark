@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>商圏比較表（エリア別）</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Noto Sans JP", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f3f4f6;
+        width: 1280px;
+        height: 720px;
+        overflow: hidden;
+      }
+      .hpb-orange {
+        color: #ff6b35;
+      }
+      .bg-hpb-orange {
+        background-color: #ff6b35;
+      }
+      .border-hpb-orange {
+        border-color: #ff6b35;
+      }
+      .text-hpb-orange {
+        color: #ff6b35;
+      }
+
+      .area-shibuya {
+        color: #ff6b35;
+        border-color: #ff6b35;
+        background-color: #fff0e9;
+      }
+      .area-daikanyama {
+        color: #059669;
+        border-color: #059669;
+        background-color: #ecfdf5;
+      }
+      .area-ginza {
+        color: #1e3a8a;
+        border-color: #1e3a8a;
+        background-color: #eff6ff;
+      }
+
+      .slide-container {
+        width: 1280px;
+        height: 720px;
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        position: relative;
+      }
+
+      /* Table Styles */
+      .area-table {
+        border-collapse: separate;
+        border-spacing: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .area-table th {
+        padding: 0;
+        vertical-align: top;
+        border-bottom: 4px solid transparent;
+      }
+
+      .area-header-card {
+        padding: 1.5rem 1rem;
+        text-align: center;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+        position: relative;
+        overflow: hidden;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .area-table td {
+        padding: 1.25rem 1.5rem;
+        vertical-align: middle;
+        border-bottom: 1px solid #f3f4f6;
+        color: #374151;
+        font-size: 0.9rem;
+        line-height: 1.5;
+        background-color: white;
+      }
+
+      .area-table tr:last-child td {
+        border-bottom: none;
+      }
+
+      .row-label {
+        background-color: #f9fafb;
+        font-weight: 700;
+        color: #4b5563;
+        width: 140px;
+        text-align: center;
+        vertical-align: middle;
+        font-size: 0.8rem;
+        border-right: 1px solid #e5e7eb;
+      }
+
+      .cell-shibuya {
+        background-color: #fffbf9 !important;
+        border-left: 2px solid #ff6b35;
+        border-right: 1px solid #fed7aa;
+      }
+      .cell-daikanyama {
+        border-right: 1px solid #a7f3d0;
+      }
+      .cell-ginza {
+        border-right: 1px solid #bfdbfe;
+      }
+
+      .tag {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        margin-right: 4px;
+        margin-bottom: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide-container">
+      <!-- Header -->
+      <div
+        class="h-20 flex items-center justify-between px-16 border-b border-gray-100 bg-white z-10"
+      >
+        <div class="flex items-center space-x-2">
+          <div
+            class="bg-gray-800 w-8 h-8 rounded-md flex items-center justify-center text-white"
+          >
+            <i class="fas fa-map-signs text-sm"></i>
+          </div>
+          <p class="text-gray-500 font-bold text-sm tracking-wider">
+            AREA COMPARISON
+          </p>
+        </div>
+        <p class="text-gray-400 text-sm">商圏エリア別 競合環境分析</p>
+      </div>
+      <!-- Main Content -->
+      <div class="flex-1 px-16 py-8 bg-gray-50 flex flex-col overflow-hidden">
+        <!-- Title Section -->
+        <div class="mb-6">
+          <h2 class="text-3xl font-bold text-gray-800 mb-2 leading-tight">
+            広域商圏におけるエリア特性の比較
+          </h2>
+          <p class="text-gray-600 text-sm">
+            Siena渋谷が位置する「渋谷エリア」と、流入層が重複する「代官山」「銀座」の特性を比較。<br />
+            各エリアの強みとターゲットを理解し、Siena独自のポジショニングを明確化します。
+          </p>
+        </div>
+        <!-- Comparison Table -->
+        <div
+          class="flex-1 bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden relative"
+        >
+          <table class="area-table">
+            <thead>
+              <tr>
+                <th
+                  class="w-[140px] bg-gray-50 border-r border-gray-200 border-b border-gray-200"
+                >
+                  <!-- Empty corner -->
+                </th>
+                <!-- Shibuya Header -->
+                <th class="w-1/3 border-b-4 border-hpb-orange bg-white">
+                  <div class="area-header-card bg-orange-50">
+                    <div
+                      class="absolute top-2 right-2 text-hpb-orange opacity-20"
+                    >
+                      <i class="fas fa-fire text-4xl"></i>
+                    </div>
+                    <p
+                      class="text-xs font-bold text-hpb-orange tracking-widest uppercase mb-1"
+                    >
+                      BENCHMARK AREA
+                    </p>
+                    <h3 class="text-2xl font-bold text-gray-800">渋谷エリア</h3>
+                    <p class="text-xs text-gray-500 mt-1">
+                      トレンド発信地 / 学生・若者の街
+                    </p>
+                  </div>
+                </th>
+                <!-- Daikanyama Header -->
+                <th class="w-1/3 border-b-4 border-emerald-500 bg-white">
+                  <div class="area-header-card bg-emerald-50">
+                    <div
+                      class="absolute top-2 right-2 text-emerald-500 opacity-20"
+                    >
+                      <i class="fas fa-leaf text-4xl"></i>
+                    </div>
+                    <p
+                      class="text-xs font-bold text-emerald-600 tracking-widest uppercase mb-1"
+                    >
+                      NEIGHBOR AREA
+                    </p>
+                    <h3 class="text-2xl font-bold text-gray-800">
+                      代官山エリア
+                    </h3>
+                    <p class="text-xs text-gray-500 mt-1">
+                      洗練された隠れ家 / オシャレ上級者
+                    </p>
+                  </div>
+                </th>
+                <!-- Ginza Header -->
+                <th class="w-1/3 border-b-4 border-blue-800 bg-white">
+                  <div class="area-header-card bg-blue-50">
+                    <div
+                      class="absolute top-2 right-2 text-blue-800 opacity-20"
+                    >
+                      <i class="fas fa-gem text-4xl"></i>
+                    </div>
+                    <p
+                      class="text-xs font-bold text-blue-800 tracking-widest uppercase mb-1"
+                    >
+                      HIGH-END AREA
+                    </p>
+                    <h3 class="text-2xl font-bold text-gray-800">銀座エリア</h3>
+                    <p class="text-xs text-gray-500 mt-1">
+                      大人の美意識 / 高級ブランド街
+                    </p>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Feature Row -->
+              <tr>
+                <td class="row-label">
+                  <div class="flex flex-col items-center">
+                    <i class="fas fa-tag text-lg mb-1 text-gray-400"></i>
+                    <span>エリア特徴</span>
+                  </div>
+                </td>
+                <td class="cell-shibuya">
+                  <p class="font-bold text-gray-800 text-lg mb-2">
+                    トレンド × コスパ
+                  </p>
+                  <div class="flex flex-wrap">
+                    <span class="tag bg-orange-100 text-orange-700"
+                      >#最先端</span
+                    >
+                    <span class="tag bg-orange-100 text-orange-700"
+                      >#SNS映え</span
+                    >
+                    <span class="tag bg-gray-100 text-gray-600"
+                      >#回転率重視</span
+                    >
+                  </div>
+                </td>
+                <td class="cell-daikanyama">
+                  <p class="font-bold text-gray-800 text-lg mb-2">
+                    デザイン性 × 空間美
+                  </p>
+                  <div class="flex flex-wrap">
+                    <span class="tag bg-emerald-100 text-emerald-700"
+                      >#似合わせ</span
+                    >
+                    <span class="tag bg-emerald-100 text-emerald-700"
+                      >#外国人風</span
+                    >
+                    <span class="tag bg-gray-100 text-gray-600"
+                      >#プライベート感</span
+                    >
+                  </div>
+                </td>
+                <td class="cell-ginza">
+                  <p class="font-bold text-gray-800 text-lg mb-2">
+                    高級志向 × 接客品質
+                  </p>
+                  <div class="flex flex-wrap">
+                    <span class="tag bg-blue-100 text-blue-800"
+                      >#ブランド力</span
+                    >
+                    <span class="tag bg-blue-100 text-blue-800">#髪質改善</span>
+                    <span class="tag bg-gray-100 text-gray-600"
+                      >#おもてなし</span
+                    >
+                  </div>
+                </td>
+              </tr>
+              <!-- Price Row -->
+              <tr>
+                <td class="row-label">
+                  <div class="flex flex-col items-center">
+                    <i class="fas fa-yen-sign text-lg mb-1 text-gray-400"></i>
+                    <span>平均価格帯</span>
+                  </div>
+                </td>
+                <td class="cell-shibuya">
+                  <div class="flex items-end mb-1">
+                    <p class="text-2xl font-bold text-gray-800">¥5,000</p>
+                    <span class="text-sm text-gray-500 ml-1">〜 ¥8,000</span>
+                  </div>
+                  <p class="text-xs text-gray-400">
+                    学生でも通いやすい価格設定
+                  </p>
+                </td>
+                <td class="cell-daikanyama">
+                  <div class="flex items-end mb-1">
+                    <p class="text-2xl font-bold text-gray-800">¥8,000</p>
+                    <span class="text-sm text-gray-500 ml-1">〜 ¥12,000</span>
+                  </div>
+                  <p class="text-xs text-gray-400">技術料が含まれた中価格帯</p>
+                </td>
+                <td class="cell-ginza">
+                  <div class="flex items-end mb-1">
+                    <p class="text-2xl font-bold text-gray-800">¥12,000</p>
+                    <span class="text-sm text-gray-500 ml-1">〜 ¥20,000</span>
+                  </div>
+                  <p class="text-xs text-gray-400">
+                    高単価・高付加価値メニュー中心
+                  </p>
+                </td>
+              </tr>
+              <!-- Target Row -->
+              <tr>
+                <td class="row-label">
+                  <div class="flex flex-col items-center">
+                    <i class="fas fa-users text-lg mb-1 text-gray-400"></i>
+                    <span>主要ターゲット</span>
+                  </div>
+                </td>
+                <td class="cell-shibuya">
+                  <div class="flex items-center mb-2">
+                    <div
+                      class="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 mr-2"
+                    >
+                      <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <div>
+                      <p class="font-bold text-sm text-gray-800">
+                        10代後半 〜 20代前半
+                      </p>
+                      <p class="text-xs text-gray-500">学生・フリーター</p>
+                    </div>
+                  </div>
+                </td>
+                <td class="cell-daikanyama">
+                  <div class="flex items-center mb-2">
+                    <div
+                      class="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 mr-2"
+                    >
+                      <i class="fas fa-tshirt"></i>
+                    </div>
+                    <div>
+                      <p class="font-bold text-sm text-gray-800">
+                        20代後半 〜 30代
+                      </p>
+                      <p class="text-xs text-gray-500">
+                        アパレル・クリエイター
+                      </p>
+                    </div>
+                  </div>
+                </td>
+                <td class="cell-ginza">
+                  <div class="flex items-center mb-2">
+                    <div
+                      class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-800 mr-2"
+                    >
+                      <i class="fas fa-wine-glass"></i>
+                    </div>
+                    <div>
+                      <p class="font-bold text-sm text-gray-800">
+                        30代 〜 50代
+                      </p>
+                      <p class="text-xs text-gray-500">OL・経営者・主婦</p>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <!-- Points Row -->
+              <tr>
+                <td class="row-label">
+                  <div class="flex flex-col items-center">
+                    <i class="fas fa-bullhorn text-lg mb-1 text-gray-400"></i>
+                    <span>訴求ポイント</span>
+                  </div>
+                </td>
+                <td class="cell-shibuya">
+                  <ul class="text-sm space-y-1">
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check text-hpb-orange mt-1 mr-2 text-xs"
+                      ></i>
+                      <p>SNSで話題のスタイル</p>
+                    </li>
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check text-hpb-orange mt-1 mr-2 text-xs"
+                      ></i>
+                      <p>透明感・ハイトーンカラー</p>
+                    </li>
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check text-hpb-orange mt-1 mr-2 text-xs"
+                      ></i>
+                      <p>お得な学割・平日割</p>
+                    </li>
+                  </ul>
+                </td>
+                <td class="cell-daikanyama">
+                  <ul class="text-sm space-y-1">
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check text-emerald-500 mt-1 mr-2 text-xs"
+                      ></i>
+                      <p>個性を活かす似合わせ</p>
+                    </li>
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check text-emerald-500 mt-1 mr-2 text-xs"
+                      ></i>
+                      <p>リラックスできる空間</p>
+                    </li>
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check text-emerald-500 mt-1 mr-2 text-xs"
+                      ></i>
+                      <p>髪への負担レス施術</p>
+                    </li>
+                  </ul>
+                </td>
+                <td class="cell-ginza">
+                  <ul class="text-sm space-y-1">
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check text-blue-600 mt-1 mr-2 text-xs"
+                      ></i>
+                      <p>エイジングケア・髪質改善</p>
+                    </li>
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check text-blue-600 mt-1 mr-2 text-xs"
+                      ></i>
+                      <p>個室・フルフラットスパ</p>
+                    </li>
+                    <li class="flex items-start">
+                      <i
+                        class="fas fa-check text-blue-600 mt-1 mr-2 text-xs"
+                      ></i>
+                      <p>マンツーマン対応</p>
+                    </li>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- Insight / Footer -->
+        <div
+          class="mt-4 bg-white p-4 rounded-xl border border-gray-200 flex items-center shadow-sm"
+        >
+          <div
+            class="bg-gray-800 text-white w-10 h-10 rounded-full flex items-center justify-center mr-4 flex-shrink-0"
+          >
+            <i class="fas fa-lightbulb text-yellow-400"></i>
+          </div>
+          <div>
+            <p
+              class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1"
+            >
+              STRATEGIC INSIGHT
+            </p>
+            <p class="text-sm text-gray-800 font-medium">
+              Siena渋谷は<strong class="text-hpb-orange"
+                >「渋谷のトレンド感」</strong
+              >と<strong class="text-hpb-orange">「通いやすい価格」</strong
+              >を両立させることで、代官山や銀座には敷居の高さを感じる<strong
+                class="border-b-2 border-hpb-orange"
+                >Z世代・若手社会人の需要を一手に引き受ける</strong
+              >ポテンシャルがあります。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

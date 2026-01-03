@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>期待効果シミュレーション</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      body {
+        font-family: "Noto Sans JP", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f3f4f6;
+        width: 1280px;
+        height: 720px;
+        overflow: hidden;
+      }
+      .text-hpb-orange {
+        color: #ff6b35;
+      }
+      .bg-hpb-orange {
+        background-color: #ff6b35;
+      }
+      .border-hpb-orange {
+        border-color: #ff6b35;
+      }
+      .bg-hpb-orange-light {
+        background-color: #fff0e9;
+      }
+
+      .slide-container {
+        width: 1280px;
+        height: 720px;
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        position: relative;
+      }
+
+      .kpi-card {
+        border-left: 4px solid #e5e7eb;
+        transition: all 0.3s ease;
+      }
+      .kpi-card:hover {
+        border-left-color: #ff6b35;
+        background-color: #fff9f6;
+        transform: translateX(4px);
+      }
+
+      /* Custom Legend for Chart */
+      .chart-legend-item {
+        display: flex;
+        align-items: center;
+        font-size: 0.75rem;
+        margin-right: 16px;
+        color: #4b5563;
+      }
+      .legend-color {
+        width: 12px;
+        height: 12px;
+        border-radius: 2px;
+        margin-right: 6px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide-container">
+      <!-- Header -->
+      <div
+        class="h-20 flex items-center justify-between px-16 border-b border-gray-100 bg-white z-10"
+      >
+        <div class="flex items-center space-x-3">
+          <div
+            class="bg-gray-800 w-8 h-8 rounded-md flex items-center justify-center text-white"
+          >
+            <i class="fas fa-chart-line text-sm"></i>
+          </div>
+          <div>
+            <p class="text-gray-500 font-bold text-xs tracking-wider uppercase">
+              EFFECT SIMULATION
+            </p>
+            <h1 class="text-lg font-bold text-gray-800 leading-none">
+              期待効果シミュレーション
+            </h1>
+          </div>
+        </div>
+        <div class="flex items-center">
+          <span
+            class="bg-hpb-orange text-white px-3 py-1 rounded text-xs font-bold mr-3"
+            >STEP 04</span
+          >
+          <p class="text-gray-400 text-sm">KPI予測・売上推移</p>
+        </div>
+      </div>
+      <!-- Main Content -->
+      <div class="flex-1 flex px-16 py-8 gap-8 bg-gray-50 overflow-hidden">
+        <!-- Left Column: KPI & Scenario Definition -->
+        <div class="w-1/3 flex flex-col gap-6">
+          <!-- KPIs Before/After -->
+          <div class="bg-white rounded-xl shadow-sm p-5 border border-gray-100">
+            <h3 class="text-gray-800 font-bold text-sm mb-4 flex items-center">
+              <i class="fas fa-tachometer-alt text-hpb-orange mr-2"></i>
+              改善KPI目標（Standard）
+            </h3>
+            <div class="space-y-4">
+              <!-- KPI 1 -->
+              <div class="kpi-card p-3 bg-gray-50 rounded-r-lg">
+                <div class="flex justify-between items-center mb-1">
+                  <span class="text-xs text-gray-500 font-bold"
+                    >クーポンCV率</span
+                  >
+                  <span class="text-xs text-green-500 font-bold"
+                    ><i class="fas fa-arrow-up mr-1"></i>+1.2pt</span
+                  >
+                </div>
+                <div class="flex items-end">
+                  <span
+                    class="text-gray-400 text-sm font-medium mr-2 line-through"
+                    >0.8%</span
+                  >
+                  <i
+                    class="fas fa-arrow-right text-gray-300 text-xs mx-2 mb-1"
+                  ></i>
+                  <span class="text-2xl font-bold text-gray-800">2.0%</span>
+                </div>
+                <p class="text-[10px] text-gray-400 mt-1">
+                  ※ターゲット明確化と写真改善による効果
+                </p>
+              </div>
+              <!-- KPI 2 -->
+              <div class="kpi-card p-3 bg-gray-50 rounded-r-lg">
+                <div class="flex justify-between items-center mb-1">
+                  <span class="text-xs text-gray-500 font-bold"
+                    >平均客単価</span
+                  >
+                  <span class="text-xs text-green-500 font-bold"
+                    ><i class="fas fa-arrow-up mr-1"></i>+¥1,100</span
+                  >
+                </div>
+                <div class="flex items-end">
+                  <span
+                    class="text-gray-400 text-sm font-medium mr-2 line-through"
+                    >¥6,100</span
+                  >
+                  <i
+                    class="fas fa-arrow-right text-gray-300 text-xs mx-2 mb-1"
+                  ></i>
+                  <span class="text-2xl font-bold text-gray-800">¥7,200</span>
+                </div>
+                <p class="text-[10px] text-gray-400 mt-1">
+                  ※セットメニュー・髪質改善の導入
+                </p>
+              </div>
+              <!-- KPI 3 -->
+              <div class="kpi-card p-3 bg-gray-50 rounded-r-lg">
+                <div class="flex justify-between items-center mb-1">
+                  <span class="text-xs text-gray-500 font-bold"
+                    >再来率（3ヶ月以内）</span
+                  >
+                  <span class="text-xs text-green-500 font-bold"
+                    ><i class="fas fa-arrow-up mr-1"></i>+15pt</span
+                  >
+                </div>
+                <div class="flex items-end">
+                  <span
+                    class="text-gray-400 text-sm font-medium mr-2 line-through"
+                    >30%</span
+                  >
+                  <i
+                    class="fas fa-arrow-right text-gray-300 text-xs mx-2 mb-1"
+                  ></i>
+                  <span class="text-2xl font-bold text-gray-800">45%</span>
+                </div>
+                <p class="text-[10px] text-gray-400 mt-1">
+                  ※2回目・3回目特典のステップ設計
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- Scenario Definition -->
+          <div
+            class="bg-white rounded-xl shadow-sm p-4 border border-gray-100 flex-1"
+          >
+            <h3 class="text-gray-800 font-bold text-xs mb-3">
+              シミュレーション条件
+            </h3>
+            <ul class="space-y-2 text-xs text-gray-600">
+              <li class="flex items-start">
+                <span
+                  class="w-2 h-2 rounded-full bg-blue-400 mt-1 mr-2 flex-shrink-0"
+                ></span>
+                <p>
+                  <strong>保守的 (Conservative):</strong>
+                  写真・クーポン変更のみ。単価増なし。
+                </p>
+              </li>
+              <li class="flex items-start">
+                <span
+                  class="w-2 h-2 rounded-full bg-hpb-orange mt-1 mr-2 flex-shrink-0"
+                ></span>
+                <p>
+                  <strong>標準的 (Standard):</strong>
+                  全施策実行。単価+¥1,100、CV率2.0%達成。
+                </p>
+              </li>
+              <li class="flex items-start">
+                <span
+                  class="w-2 h-2 rounded-full bg-green-500 mt-1 mr-2 flex-shrink-0"
+                ></span>
+                <p>
+                  <strong>高位 (Aggressive):</strong>
+                  SNS連携成功。CV率2.5%、単価+¥1,500達成。
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- Right Column: Chart Area -->
+        <div
+          class="w-2/3 flex flex-col bg-white rounded-xl shadow-sm border border-gray-100 p-6 relative"
+        >
+          <div class="flex justify-between items-center mb-4">
+            <h2 class="text-xl font-bold text-gray-800">
+              売上推移予測
+              <span class="text-sm font-normal text-gray-500 ml-2"
+                >(単位: 万円)</span
+              >
+            </h2>
+            <!-- Custom Legend -->
+            <div class="flex">
+              <div class="chart-legend-item">
+                <div class="legend-color bg-gray-300"></div>
+                Baseline
+              </div>
+              <div class="chart-legend-item">
+                <div class="legend-color bg-blue-400"></div>
+                Conservative
+              </div>
+              <div class="chart-legend-item">
+                <div class="legend-color bg-hpb-orange"></div>
+                Standard
+              </div>
+              <div class="chart-legend-item">
+                <div class="legend-color bg-green-500"></div>
+                Aggressive
+              </div>
+            </div>
+          </div>
+          <div class="flex-1 w-full relative">
+            <canvas id="projectionChart"></canvas>
+          </div>
+          <!-- Insight Box -->
+          <div
+            class="mt-4 bg-hpb-orange-light rounded-lg p-3 flex items-start border border-orange-100"
+          >
+            <i class="fas fa-lightbulb text-hpb-orange mt-1 mr-3 text-lg"></i>
+            <div>
+              <p class="text-sm font-bold text-hpb-orange mb-1">
+                Standardシナリオでの着地見込み
+              </p>
+              <p class="text-xs text-gray-700 leading-relaxed">
+                掲載プラン変更と推奨施策の実施により、開始3ヶ月目で<span
+                  class="font-bold border-b border-gray-400"
+                  >月商200万円ライン</span
+                >を突破。半年後には現状比<span class="font-bold text-hpb-orange"
+                  >145%成長</span
+                >（+72万円/月）が見込まれます。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      const ctx = document.getElementById("projectionChart").getContext("2d");
+
+      // Gradient for Standard Scenario
+      const gradientStandard = ctx.createLinearGradient(0, 0, 0, 400);
+      gradientStandard.addColorStop(0, "rgba(255, 107, 53, 0.4)");
+      gradientStandard.addColorStop(1, "rgba(255, 107, 53, 0.0)");
+
+      // Data Mock
+      const labels = [
+        "Start",
+        "Month 1",
+        "Month 2",
+        "Month 3",
+        "Month 4",
+        "Month 5",
+        "Month 6",
+      ];
+      const dataBaseline = [150, 152, 148, 155, 151, 153, 155];
+      const dataConservative = [150, 160, 165, 172, 178, 185, 190];
+      const dataStandard = [150, 175, 195, 210, 225, 238, 252];
+      const dataAggressive = [150, 190, 220, 250, 275, 295, 320];
+
+      new Chart(ctx, {
+        type: "line",
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: "Baseline (現状維持)",
+              data: dataBaseline,
+              borderColor: "#D1D5DB", // gray-300
+              borderWidth: 2,
+              borderDash: [5, 5],
+              pointRadius: 0,
+              tension: 0.4,
+              fill: false,
+            },
+            {
+              label: "Conservative (保守)",
+              data: dataConservative,
+              borderColor: "#60A5FA", // blue-400
+              backgroundColor: "transparent",
+              borderWidth: 2,
+              pointBackgroundColor: "#60A5FA",
+              pointRadius: 3,
+              tension: 0.4,
+            },
+            {
+              label: "Standard (標準)",
+              data: dataStandard,
+              borderColor: "#FF6B35", // hpb-orange
+              backgroundColor: gradientStandard,
+              borderWidth: 4,
+              pointBackgroundColor: "#fff",
+              pointBorderColor: "#FF6B35",
+              pointBorderWidth: 2,
+              pointRadius: 5,
+              pointHoverRadius: 7,
+              tension: 0.4,
+              fill: true,
+            },
+            {
+              label: "Aggressive (高位)",
+              data: dataAggressive,
+              borderColor: "#10B981", // green-500
+              backgroundColor: "transparent",
+              borderWidth: 2,
+              pointBackgroundColor: "#10B981",
+              pointRadius: 3,
+              tension: 0.4,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: false, // Using custom legend
+            },
+            tooltip: {
+              mode: "index",
+              intersect: false,
+              backgroundColor: "rgba(255, 255, 255, 0.9)",
+              titleColor: "#1F2937",
+              bodyColor: "#4B5563",
+              borderColor: "#E5E7EB",
+              borderWidth: 1,
+              padding: 10,
+              callbacks: {
+                label: function (context) {
+                  let label = context.dataset.label || "";
+                  if (label) {
+                    label += ": ";
+                  }
+                  if (context.parsed.y !== null) {
+                    label += new Intl.NumberFormat("ja-JP", {
+                      style: "currency",
+                      currency: "JPY",
+                    }).format(context.parsed.y * 10000);
+                  }
+                  return label;
+                },
+              },
+            },
+          },
+          scales: {
+            y: {
+              beginAtZero: false,
+              min: 100,
+              max: 350,
+              grid: {
+                color: "#F3F4F6",
+                drawBorder: false,
+              },
+              ticks: {
+                font: {
+                  family: "'Noto Sans JP', sans-serif",
+                  size: 10,
+                },
+                callback: function (value) {
+                  return value + "万";
+                },
+                color: "#9CA3AF",
+              },
+            },
+            x: {
+              grid: {
+                display: false,
+              },
+              ticks: {
+                font: {
+                  family: "'Noto Sans JP', sans-serif",
+                  size: 11,
+                },
+                color: "#6B7280",
+              },
+            },
+          },
+          interaction: {
+            mode: "nearest",
+            axis: "x",
+            intersect: false,
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

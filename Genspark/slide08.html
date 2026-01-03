@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>周辺サロン一覧（渋谷徒歩圏）</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Noto Sans JP", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f3f4f6;
+        width: 1280px;
+        height: 720px;
+        overflow: hidden;
+      }
+      .hpb-orange {
+        color: #ff6b35;
+      }
+      .bg-hpb-orange {
+        background-color: #ff6b35;
+      }
+      .border-hpb-orange {
+        border-color: #ff6b35;
+      }
+      .text-hpb-orange {
+        color: #ff6b35;
+      }
+      .bg-hpb-orange-light {
+        background-color: #fff0e9;
+      }
+
+      .slide-container {
+        width: 1280px;
+        height: 720px;
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        position: relative;
+      }
+
+      .salon-card {
+        transition: all 0.3s ease;
+        border: 1px solid #e5e7eb;
+      }
+      .salon-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        border-color: #ff6b35;
+      }
+
+      /* Tag styles */
+      .tag-trend {
+        background-color: #fce7f3;
+        color: #db2777;
+      } /* Pink */
+      .tag-cost {
+        background-color: #e0f2fe;
+        color: #0284c7;
+      } /* Blue */
+      .tag-care {
+        background-color: #f3e8ff;
+        color: #9333ea;
+      } /* Purple */
+      .tag-tech {
+        background-color: #dcfce7;
+        color: #16a34a;
+      } /* Green */
+    </style>
+  </head>
+  <body>
+    <div class="slide-container">
+      <!-- Header -->
+      <div
+        class="h-20 flex items-center justify-between px-16 border-b border-gray-100 bg-white z-10"
+      >
+        <div class="flex items-center space-x-2">
+          <div
+            class="bg-hpb-orange w-8 h-8 rounded-md flex items-center justify-center text-white"
+          >
+            <i class="fas fa-map-marker-alt text-sm"></i>
+          </div>
+          <p class="text-gray-400 font-bold text-sm tracking-wider">
+            COMPETITIVE LANDSCAPE
+          </p>
+        </div>
+        <p class="text-gray-400 text-sm">周辺競合サロン一覧</p>
+      </div>
+      <!-- Main Content -->
+      <div class="flex-1 px-16 py-10 bg-gray-50">
+        <!-- Title Section -->
+        <div class="mb-8 flex justify-between items-end">
+          <div>
+            <h2 class="text-3xl font-bold text-gray-800 mb-2">
+              渋谷エリア 主要競合サロンの選定
+            </h2>
+            <p class="text-gray-600">
+              Siena渋谷と同じ<span class="font-bold text-hpb-orange"
+                >「トレンド×コストパフォーマンス」</span
+              >領域、または<span class="font-bold text-hpb-orange"
+                >「髪質改善×高単価」</span
+              >領域で<br />
+              シェアを争う主要4サロンを抽出しました。
+            </p>
+          </div>
+          <div class="flex items-center space-x-2">
+            <span
+              class="bg-gray-200 text-gray-600 px-3 py-1 rounded-full text-xs font-bold"
+              >選定基準</span
+            >
+            <p class="text-xs text-gray-500">
+              渋谷駅徒歩5分圏内 / 口コミ高評価 / 若年層ターゲット
+            </p>
+          </div>
+        </div>
+        <!-- Salon Cards Grid -->
+        <div class="grid grid-cols-4 gap-6 h-3/4">
+          <!-- Salon 1: La fith -->
+          <div
+            class="salon-card bg-white rounded-xl p-6 flex flex-col relative overflow-hidden"
+          >
+            <div class="absolute top-0 left-0 w-full h-1 bg-blue-500"></div>
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <span class="text-xs font-bold text-gray-400 block mb-1"
+                  >圧倒的コスパ</span
+                >
+                <h3 class="text-xl font-bold text-gray-800 leading-tight">
+                  La fith hair<br />charme 渋谷
+                </h3>
+              </div>
+              <div
+                class="bg-blue-50 w-8 h-8 rounded-full flex items-center justify-center text-blue-500"
+              >
+                <i class="fas fa-store"></i>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-2 py-1 rounded text-xs font-bold tag-cost"
+                >プチプラ</span
+              >
+              <span class="px-2 py-1 rounded text-xs font-bold tag-trend"
+                >アディクシー</span
+              >
+            </div>
+            <div class="bg-gray-50 rounded-lg p-3 mb-4">
+              <p class="text-xs text-gray-500 mb-1">カット+カラー</p>
+              <p class="text-2xl font-bold text-gray-800">
+                ¥4,900<span class="text-xs font-normal text-gray-400 ml-1"
+                  >〜</span
+                >
+              </p>
+            </div>
+            <div class="mt-auto">
+              <p
+                class="text-xs font-bold text-gray-500 mb-2 border-b border-gray-100 pb-1"
+              >
+                強み・特徴
+              </p>
+              <ul class="space-y-1">
+                <li class="flex items-start text-xs text-gray-600">
+                  <i class="fas fa-check text-blue-400 mt-1 mr-2"></i>
+                  <span>全国展開のスケールメリット</span>
+                </li>
+                <li class="flex items-start text-xs text-gray-600">
+                  <i class="fas fa-check text-blue-400 mt-1 mr-2"></i>
+                  <span>23時まで営業の利便性</span>
+                </li>
+                <li class="flex items-start text-xs text-gray-600">
+                  <i class="fas fa-check text-blue-400 mt-1 mr-2"></i>
+                  <span>低価格×高級薬剤の訴求</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- Salon 2: Merak -->
+          <div
+            class="salon-card bg-white rounded-xl p-6 flex flex-col relative overflow-hidden"
+          >
+            <div class="absolute top-0 left-0 w-full h-1 bg-pink-500"></div>
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <span class="text-xs font-bold text-gray-400 block mb-1"
+                  >トレンド発信</span
+                >
+                <h3 class="text-xl font-bold text-gray-800 leading-tight">
+                  Merak<br />【メラク】
+                </h3>
+              </div>
+              <div
+                class="bg-pink-50 w-8 h-8 rounded-full flex items-center justify-center text-pink-500"
+              >
+                <i class="fas fa-camera"></i>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-2 py-1 rounded text-xs font-bold tag-trend"
+                >韓国風</span
+              >
+              <span class="px-2 py-1 rounded text-xs font-bold tag-tech"
+                >顔周りカット</span
+              >
+            </div>
+            <div class="bg-gray-50 rounded-lg p-3 mb-4">
+              <p class="text-xs text-gray-500 mb-1">カット+カラー</p>
+              <p class="text-2xl font-bold text-gray-800">
+                ¥7,900<span class="text-xs font-normal text-gray-400 ml-1"
+                  >〜</span
+                >
+              </p>
+            </div>
+            <div class="mt-auto">
+              <p
+                class="text-xs font-bold text-gray-500 mb-2 border-b border-gray-100 pb-1"
+              >
+                強み・特徴
+              </p>
+              <ul class="space-y-1">
+                <li class="flex items-start text-xs text-gray-600">
+                  <i class="fas fa-check text-pink-400 mt-1 mr-2"></i>
+                  <span>SNS映えする内装と技術</span>
+                </li>
+                <li class="flex items-start text-xs text-gray-600">
+                  <i class="fas fa-check text-pink-400 mt-1 mr-2"></i>
+                  <span>顔周りの似合わせ特化</span>
+                </li>
+                <li class="flex items-start text-xs text-gray-600">
+                  <i class="fas fa-check text-pink-400 mt-1 mr-2"></i>
+                  <span>中価格帯での質重視</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- Salon 3: EIGHT -->
+          <div
+            class="salon-card bg-white rounded-xl p-6 flex flex-col relative overflow-hidden"
+          >
+            <div class="absolute top-0 left-0 w-full h-1 bg-green-500"></div>
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <span class="text-xs font-bold text-gray-400 block mb-1"
+                  >安定の実力派</span
+                >
+                <h3 class="text-xl font-bold text-gray-800 leading-tight">
+                  EIGHT plat<br />渋谷店
+                </h3>
+              </div>
+              <div
+                class="bg-green-50 w-8 h-8 rounded-full flex items-center justify-center text-green-500"
+              >
+                <i class="fas fa-leaf"></i>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-2 py-1 rounded text-xs font-bold tag-trend"
+                >イルミナ</span
+              >
+              <span class="px-2 py-1 rounded text-xs font-bold tag-cost"
+                >高コスパ</span
+              >
+            </div>
+            <div class="bg-gray-50 rounded-lg p-3 mb-4">
+              <p class="text-xs text-gray-500 mb-1">イルミナカラー+カット</p>
+              <p class="text-2xl font-bold text-gray-800">
+                ¥6,900<span class="text-xs font-normal text-gray-400 ml-1"
+                  >〜</span
+                >
+              </p>
+            </div>
+            <div class="mt-auto">
+              <p
+                class="text-xs font-bold text-gray-500 mb-2 border-b border-gray-100 pb-1"
+              >
+                強み・特徴
+              </p>
+              <ul class="space-y-1">
+                <li class="flex items-start text-xs text-gray-600">
+                  <i class="fas fa-check text-green-400 mt-1 mr-2"></i>
+                  <span>知名度と信頼感</span>
+                </li>
+                <li class="flex items-start text-xs text-gray-600">
+                  <i class="fas fa-check text-green-400 mt-1 mr-2"></i>
+                  <span>幅広い客層への対応力</span>
+                </li>
+                <li class="flex items-start text-xs text-gray-600">
+                  <i class="fas fa-check text-green-400 mt-1 mr-2"></i>
+                  <span>メンズ客の取り込みも強い</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- Salon 4: Zina -->
+          <div
+            class="salon-card bg-white rounded-xl p-6 flex flex-col relative overflow-hidden"
+          >
+            <div class="absolute top-0 left-0 w-full h-1 bg-purple-500"></div>
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <span class="text-xs font-bold text-gray-400 block mb-1"
+                  >髪質改善・艶</span
+                >
+                <h3 class="text-xl font-bold text-gray-800 leading-tight">
+                  Zina<br />渋谷
+                </h3>
+              </div>
+              <div
+                class="bg-purple-50 w-8 h-8 rounded-full flex items-center justify-center text-purple-500"
+              >
+                <i class="fas fa-gem"></i>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-2 py-1 rounded text-xs font-bold tag-care"
+                >髪質改善</span
+              >
+              <span class="px-2 py-1 rounded text-xs font-bold tag-tech"
+                >艶髪</span
+              >
+            </div>
+            <div class="bg-gray-50 rounded-lg p-3 mb-4">
+              <p class="text-xs text-gray-500 mb-1">髪質改善+カラー</p>
+              <p class="text-2xl font-bold text-gray-800">
+                ¥8,900<span class="text-xs font-normal text-gray-400 ml-1"
+                  >〜</span
+                >
+              </p>
+            </div>
+            <div class="mt-auto">
+              <p
+                class="text-xs font-bold text-gray-500 mb-2 border-b border-gray-100 pb-1"
+              >
+                強み・特徴
+              </p>
+              <ul class="space-y-1">
+                <li class="flex items-start text-xs text-gray-600">
+                  <i class="fas fa-check text-purple-400 mt-1 mr-2"></i>
+                  <span>高単価・高付加価値戦略</span>
+                </li>
+                <li class="flex items-start text-xs text-gray-600">
+                  <i class="fas fa-check text-purple-400 mt-1 mr-2"></i>
+                  <span>マンツーマン接客</span>
+                </li>
+                <li class="flex items-start text-xs text-gray-600">
+                  <i class="fas fa-check text-purple-400 mt-1 mr-2"></i>
+                  <span>大人女性層もカバー</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>アジェンダ - ベンチマーク分析型営業提案</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f4f6;
+            width: 1280px;
+            height: 720px;
+            overflow: hidden;
+        }
+        .hpb-orange {
+            color: #FF6B35;
+        }
+        .bg-hpb-orange {
+            background-color: #FF6B35;
+        }
+        .border-hpb-orange {
+            border-color: #FF6B35;
+        }
+        .text-hpb-orange {
+            color: #FF6B35;
+        }
+        .bg-hpb-orange-light {
+            background-color: #FFF0E9;
+        }
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            display: flex;
+            flex-direction: column;
+            background-color: white;
+            position: relative;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .agenda-card {
+            transition: all 0.3s ease;
+        }
+        .agenda-number {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-weight: 900;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container">
+<!-- Header -->
+<div class="h-20 flex items-center justify-between px-16 border-b border-gray-100">
+<div class="flex items-center space-x-2">
+<div class="bg-hpb-orange w-8 h-8 rounded-md flex items-center justify-center text-white">
+<i class="fas fa-cut text-sm"></i>
+</div>
+<p class="text-gray-400 font-bold text-sm tracking-wider">SALON CONSULTING PROPOSAL</p>
+</div>
+<p class="text-gray-400 text-sm">2026.01.03</p>
+</div>
+<!-- Main Content -->
+<div class="flex-1 flex px-16 py-10 relative">
+<!-- Left Side: Title & Intro -->
+<div class="w-1/3 pr-12 flex flex-col justify-center">
+<div class="mb-2">
+<span class="text-hpb-orange font-bold tracking-widest text-sm uppercase">Table of Contents</span>
+</div>
+<h1 class="text-5xl font-bold text-gray-800 mb-8 leading-tight">
+                    本日の<br/>ご提案内容
+                </h1>
+<p class="text-gray-500 leading-relaxed mb-8">
+                    競合サロンの徹底分析から見えた<br/>
+                    市場の空白地帯と、<br/>
+                    貴店が取るべき具体的な戦略について<br/>
+                    5つのステップでご説明します。
+                </p>
+<div class="w-16 h-1 bg-hpb-orange"></div>
+</div>
+<!-- Right Side: Agenda Items -->
+<div class="w-2/3 grid grid-cols-1 gap-5 pl-8 border-l border-gray-100">
+<!-- Item 1 -->
+<div class="agenda-card flex items-center p-5 bg-white rounded-xl shadow-sm border border-gray-100 relative overflow-hidden group">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-hpb-orange"></div>
+<div class="mr-6">
+<span class="agenda-number text-5xl text-gray-200 group-hover:text-hpb-orange transition-colors">01</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center mb-1">
+<i class="fas fa-search text-gray-400 mr-2 text-sm"></i>
+<h3 class="text-xl font-bold text-gray-800">ベンチマーク詳細分析</h3>
+</div>
+<p class="text-gray-500 text-sm">「Siena渋谷」のメニュー・価格・集客戦略の解剖</p>
+</div>
+<div class="bg-hpb-orange-light w-10 h-10 rounded-full flex items-center justify-center text-hpb-orange">
+<i class="fas fa-arrow-right"></i>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="agenda-card flex items-center p-5 bg-white rounded-xl shadow-sm border border-gray-100 relative overflow-hidden group">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-gray-200"></div>
+<div class="mr-6">
+<span class="agenda-number text-5xl text-gray-200">02</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center mb-1">
+<i class="fas fa-map-marked-alt text-gray-400 mr-2 text-sm"></i>
+<h3 class="text-xl font-bold text-gray-800">競合環境・商圏分析</h3>
+</div>
+<p class="text-gray-500 text-sm">渋谷エリアおよび広域商圏（代官山・銀座）の競合動向</p>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="agenda-card flex items-center p-5 bg-white rounded-xl shadow-sm border border-gray-100 relative overflow-hidden group">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-gray-200"></div>
+<div class="mr-6">
+<span class="agenda-number text-5xl text-gray-200">03</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center mb-1">
+<i class="fas fa-crosshairs text-gray-400 mr-2 text-sm"></i>
+<h3 class="text-xl font-bold text-gray-800">ポジショニング戦略</h3>
+</div>
+<p class="text-gray-500 text-sm">2軸マップによる市場の空白地帯（勝てる領域）の特定</p>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="agenda-card flex items-center p-5 bg-white rounded-xl shadow-sm border border-gray-100 relative overflow-hidden group">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-gray-200"></div>
+<div class="mr-6">
+<span class="agenda-number text-5xl text-gray-200">04</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center mb-1">
+<i class="fas fa-pen-fancy text-gray-400 mr-2 text-sm"></i>
+<h3 class="text-xl font-bold text-gray-800">具体的な掲載提案</h3>
+</div>
+<p class="text-gray-500 text-sm">推奨メニュー・適正価格・響くコピー・クーポン設計案</p>
+</div>
+</div>
+<!-- Item 5 -->
+<div class="agenda-card flex items-center p-5 bg-white rounded-xl shadow-sm border border-gray-100 relative overflow-hidden group">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-gray-200"></div>
+<div class="mr-6">
+<span class="agenda-number text-5xl text-gray-200">05</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center mb-1">
+<i class="fas fa-chart-line text-gray-400 mr-2 text-sm"></i>
+<h3 class="text-xl font-bold text-gray-800">効果予測とアクション</h3>
+</div>
+<p class="text-gray-500 text-sm">期待される集客効果シミュレーションと今後のロードマップ</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Decorative Elements -->
+<div class="absolute bottom-0 right-0 w-64 h-64 bg-gray-50 rounded-full -mr-32 -mb-32 z-0 pointer-events-none"></div>
+<div class="absolute top-20 right-10 w-4 h-4 rounded-full border-2 border-hpb-orange opacity-20"></div>
+</div>
+</body>
+</html>

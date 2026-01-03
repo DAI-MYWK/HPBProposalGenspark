@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>渋谷エリアの競合比較表</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Noto Sans JP", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f3f4f6;
+        width: 1280px;
+        height: 720px;
+        overflow: hidden;
+      }
+      .hpb-orange {
+        color: #ff6b35;
+      }
+      .bg-hpb-orange {
+        background-color: #ff6b35;
+      }
+      .border-hpb-orange {
+        border-color: #ff6b35;
+      }
+      .text-hpb-orange {
+        color: #ff6b35;
+      }
+      .bg-hpb-orange-light {
+        background-color: #fff0e9;
+      }
+      .bg-hpb-orange-10 {
+        background-color: rgba(255, 107, 53, 0.1);
+      }
+
+      .slide-container {
+        width: 1280px;
+        height: 720px;
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        position: relative;
+      }
+
+      /* Table Styling */
+      .comparison-table {
+        border-collapse: separate;
+        border-spacing: 0;
+        width: 100%;
+      }
+
+      .comparison-table th {
+        background-color: #f9fafb;
+        color: #6b7280;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        padding: 12px 16px;
+        border-bottom: 2px solid #e5e7eb;
+        vertical-align: middle;
+      }
+
+      .comparison-table td {
+        padding: 16px;
+        border-bottom: 1px solid #f3f4f6;
+        vertical-align: middle;
+        color: #374151;
+        font-size: 0.875rem;
+        line-height: 1.5;
+      }
+
+      /* Benchmark Column Highlight */
+      .col-benchmark {
+        background-color: #fff0e9;
+        border-left: 2px solid #ff6b35;
+        border-right: 2px solid #ff6b35;
+        position: relative;
+      }
+      .col-benchmark-header {
+        background-color: #ff6b35 !important;
+        color: white !important;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        border-bottom: none !important;
+        position: relative;
+      }
+      .col-benchmark-header::after {
+        content: "Benchmark";
+        position: absolute;
+        top: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #000;
+        color: #fff;
+        font-size: 0.6rem;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-weight: bold;
+      }
+
+      .col-benchmark-bottom {
+        border-bottom: 2px solid #ff6b35 !important;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+      }
+
+      .star-rating {
+        color: #fbbf24;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        padding: 2px 8px;
+        border-radius: 9999px;
+        font-size: 0.7rem;
+        font-weight: 700;
+      }
+      .badge-gray {
+        background-color: #f3f4f6;
+        color: #4b5563;
+      }
+      .badge-green {
+        background-color: #d1fae5;
+        color: #059669;
+      }
+      .badge-blue {
+        background-color: #dbeafe;
+        color: #2563eb;
+      }
+      .badge-red {
+        background-color: #fee2e2;
+        color: #dc2626;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide-container">
+      <!-- Header -->
+      <div
+        class="h-20 flex items-center justify-between px-16 border-b border-gray-100 bg-white z-10"
+      >
+        <div class="flex items-center space-x-2">
+          <div
+            class="bg-hpb-orange w-8 h-8 rounded-md flex items-center justify-center text-white"
+          >
+            <i class="fas fa-table text-sm"></i>
+          </div>
+          <p class="text-gray-400 font-bold text-sm tracking-wider">
+            COMPETITIVE LANDSCAPE
+          </p>
+        </div>
+        <p class="text-gray-400 text-sm">09. 渋谷エリア競合比較</p>
+      </div>
+      <!-- Main Content -->
+      <div class="flex-1 px-16 py-8 bg-gray-50 overflow-hidden flex flex-col">
+        <!-- Title Section -->
+        <div class="mb-6 flex justify-between items-end">
+          <div>
+            <h2 class="text-3xl font-bold text-gray-800 mb-2">
+              渋谷エリア 主要競合比較
+            </h2>
+            <p class="text-gray-600 text-sm">
+              「トレンド×低価格」領域におけるSiena渋谷の立ち位置と、競合サロン（低価格・トレンド系）との差異を分析。
+            </p>
+          </div>
+          <div class="flex space-x-4">
+            <div class="flex items-center text-xs text-gray-500">
+              <span class="w-3 h-3 bg-hpb-orange rounded-full mr-2"></span>
+              <span>ベンチマーク</span>
+            </div>
+            <div class="flex items-center text-xs text-gray-500">
+              <span
+                class="w-3 h-3 bg-white border border-gray-300 rounded-full mr-2"
+              ></span>
+              <span>競合サロン</span>
+            </div>
+          </div>
+        </div>
+        <!-- Table Container -->
+        <div
+          class="flex-1 bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden relative"
+        >
+          <table class="comparison-table h-full">
+            <thead>
+              <tr>
+                <th class="w-1/6 pl-6 text-left">比較項目</th>
+                <th class="w-1/4 col-benchmark-header text-center text-lg">
+                  Siena 渋谷
+                </th>
+                <th class="w-1/5 text-center">
+                  <p class="text-gray-800 font-bold text-base">La fith 渋谷</p>
+                  <p class="text-xs text-gray-400 font-normal">ラフィス</p>
+                </th>
+                <th class="w-1/5 text-center">
+                  <p class="text-gray-800 font-bold text-base">Merak</p>
+                  <p class="text-xs text-gray-400 font-normal">メラク</p>
+                </th>
+                <th class="w-1/5 text-center">
+                  <p class="text-gray-800 font-bold text-base">EIGHT plat</p>
+                  <p class="text-xs text-gray-400 font-normal">
+                    エイト プラット
+                  </p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Row 1: Concept/Strength -->
+              <tr>
+                <td
+                  class="font-bold text-gray-700 pl-6 border-r border-gray-100 bg-gray-50"
+                >
+                  <i
+                    class="fas fa-bullseye text-hpb-orange mr-2 w-5 text-center"
+                  ></i
+                  >強み・コンセプト
+                </td>
+                <td class="col-benchmark align-top">
+                  <p class="font-bold text-hpb-orange mb-1">トレンド×低価格</p>
+                  <p class="text-xs text-gray-600 leading-snug">
+                    SNS映えするデザインカラーと髪質改善を、学生も通える価格で提供。
+                  </p>
+                </td>
+                <td class="align-top border-r border-gray-100">
+                  <p class="font-bold text-gray-700 mb-1">プチプラ×全般</p>
+                  <p class="text-xs text-gray-500 leading-snug">
+                    圧倒的な安さと店舗数。メニュー幅が広く万能型。
+                  </p>
+                </td>
+                <td class="align-top border-r border-gray-100">
+                  <p class="font-bold text-gray-700 mb-1">韓国風×ハイトーン</p>
+                  <p class="text-xs text-gray-500 leading-snug">
+                    渋谷トップクラスの人気。デザイン特化で単価やや高め。
+                  </p>
+                </td>
+                <td class="align-top">
+                  <p class="font-bold text-gray-700 mb-1">メンズ×ショート</p>
+                  <p class="text-xs text-gray-500 leading-snug">
+                    男性客比率が高く、回転率重視のスタイル提案が得意。
+                  </p>
+                </td>
+              </tr>
+              <!-- Row 2: Price (Cut+Color) -->
+              <tr>
+                <td
+                  class="font-bold text-gray-700 pl-6 border-r border-gray-100 bg-gray-50"
+                >
+                  <i class="fas fa-tag text-hpb-orange mr-2 w-5 text-center"></i
+                  >新規最安値<br />
+                  <span class="text-xs font-normal text-gray-400 ml-7"
+                    >(カット+カラー)</span
+                  >
+                </td>
+                <td class="col-benchmark text-center">
+                  <p class="text-2xl font-bold text-gray-800">¥5,900</p>
+                  <span class="badge badge-green mt-1">平日限定</span>
+                </td>
+                <td class="text-center border-r border-gray-100">
+                  <p class="text-xl font-bold text-gray-600">¥3,900</p>
+                  <span class="badge badge-red mt-1">最安値圏</span>
+                </td>
+                <td class="text-center border-r border-gray-100">
+                  <p class="text-xl font-bold text-gray-600">¥7,900</p>
+                  <span class="badge badge-gray mt-1">中〜高価格</span>
+                </td>
+                <td class="text-center">
+                  <p class="text-xl font-bold text-gray-600">¥4,900</p>
+                  <span class="badge badge-blue mt-1">低価格</span>
+                </td>
+              </tr>
+              <!-- Row 3: Menu Portfolio -->
+              <tr>
+                <td
+                  class="font-bold text-gray-700 pl-6 border-r border-gray-100 bg-gray-50"
+                >
+                  <i
+                    class="fas fa-layer-group text-hpb-orange mr-2 w-5 text-center"
+                  ></i
+                  >主力メニュー
+                </td>
+                <td class="col-benchmark align-middle">
+                  <ul class="text-xs text-gray-700 space-y-1">
+                    <li>
+                      <i class="fas fa-check text-hpb-orange mr-1"></i
+                      >イルミナカラー
+                    </li>
+                    <li>
+                      <i class="fas fa-check text-hpb-orange mr-1"></i>髪質改善
+                      (TOKIO)
+                    </li>
+                    <li>
+                      <i class="fas fa-check text-hpb-orange mr-1"></i
+                      >韓国風レイヤー
+                    </li>
+                  </ul>
+                </td>
+                <td class="align-middle border-r border-gray-100">
+                  <ul class="text-xs text-gray-500 space-y-1">
+                    <li>・アディクシー</li>
+                    <li>・オーガニックカラー</li>
+                    <li>・縮毛矯正</li>
+                  </ul>
+                </td>
+                <td class="align-middle border-r border-gray-100">
+                  <ul class="text-xs text-gray-500 space-y-1">
+                    <li>・ダブルカラー</li>
+                    <li>・顔周りカット</li>
+                    <li>・オージュア</li>
+                  </ul>
+                </td>
+                <td class="align-middle">
+                  <ul class="text-xs text-gray-500 space-y-1">
+                    <li>・メンズパーマ</li>
+                    <li>・ツイストスパイラル</li>
+                    <li>・ショートボブ</li>
+                  </ul>
+                </td>
+              </tr>
+              <!-- Row 4: Student Discount -->
+              <tr>
+                <td
+                  class="font-bold text-gray-700 pl-6 border-r border-gray-100 bg-gray-50"
+                >
+                  <i
+                    class="fas fa-graduation-cap text-hpb-orange mr-2 w-5 text-center"
+                  ></i
+                  >学割U24対応
+                </td>
+                <td class="col-benchmark text-center">
+                  <div class="flex flex-col items-center">
+                    <i
+                      class="fas fa-check-circle text-2xl text-hpb-orange mb-1"
+                    ></i>
+                    <p class="text-xs font-bold text-gray-700">
+                      主力クーポン化
+                    </p>
+                  </div>
+                </td>
+                <td class="text-center border-r border-gray-100">
+                  <i class="fas fa-check text-gray-400 mb-1"></i>
+                  <p class="text-xs text-gray-500">あり</p>
+                </td>
+                <td class="text-center border-r border-gray-100">
+                  <i class="fas fa-check text-gray-400 mb-1"></i>
+                  <p class="text-xs text-gray-500">あり</p>
+                </td>
+                <td class="text-center">
+                  <div class="flex flex-col items-center">
+                    <i
+                      class="fas fa-check-circle text-gray-600 text-lg mb-1"
+                    ></i>
+                    <p class="text-xs text-gray-500">メンズ学割強</p>
+                  </div>
+                </td>
+              </tr>
+              <!-- Row 5: Business Hours -->
+              <tr>
+                <td
+                  class="font-bold text-gray-700 pl-6 border-r border-gray-100 bg-gray-50"
+                >
+                  <i
+                    class="fas fa-clock text-hpb-orange mr-2 w-5 text-center"
+                  ></i
+                  >営業時間
+                </td>
+                <td class="col-benchmark text-center col-benchmark-bottom">
+                  <p class="font-bold text-gray-800">〜22:00</p>
+                  <p class="text-xs text-gray-500">平日夜に強み</p>
+                </td>
+                <td class="text-center border-r border-gray-100">
+                  <p class="font-bold text-gray-600">〜23:00</p>
+                  <p class="text-xs text-gray-400">深夜対応</p>
+                </td>
+                <td class="text-center border-r border-gray-100">
+                  <p class="font-bold text-gray-600">〜22:00</p>
+                  <p class="text-xs text-gray-400">標準的</p>
+                </td>
+                <td class="text-center">
+                  <p class="font-bold text-gray-600">〜23:00</p>
+                  <p class="text-xs text-gray-400">仕事帰り対応</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- Legend / Note -->
+        <div class="mt-4 flex justify-between items-center">
+          <div class="flex items-center space-x-4">
+            <p
+              class="text-xs text-gray-500 bg-white px-3 py-1 rounded-full border border-gray-200"
+            >
+              <span class="font-bold text-hpb-orange">Analysis:</span>
+              Siena渋谷は「価格」では最安値競合に劣るものの、「トレンド感（質）」で差別化し、高価格帯サロンより通いやすいポジションを確立。
+            </p>
+          </div>
+          <p class="text-xs text-gray-400 text-right">
+            ※各社ホットペッパービューティー掲載情報（2026年1月時点）に基づく比較
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

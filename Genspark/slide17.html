@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>掲載提案｜価格戦略 - Siena渋谷</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Noto Sans JP", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f3f4f6;
+        width: 1280px;
+        height: 720px;
+        overflow: hidden;
+      }
+      .hpb-orange {
+        color: #ff6b35;
+      }
+      .bg-hpb-orange {
+        background-color: #ff6b35;
+      }
+      .border-hpb-orange {
+        border-color: #ff6b35;
+      }
+      .bg-hpb-orange-light {
+        background-color: #fff0e9;
+      }
+
+      .slide-container {
+        width: 1280px;
+        height: 720px;
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        position: relative;
+      }
+
+      .strategy-card {
+        transition: transform 0.2s;
+      }
+      .strategy-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .price-tag {
+        font-feature-settings: "palt";
+      }
+
+      .arrow-divider {
+        position: relative;
+      }
+      .arrow-divider::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: -12px;
+        width: 0;
+        height: 0;
+        border-top: 8px solid transparent;
+        border-bottom: 8px solid transparent;
+        border-left: 12px solid #e5e7eb;
+        transform: translateY(-50%);
+        z-index: 10;
+      }
+      /* Last child needs no arrow */
+      .strategy-card:last-child .arrow-divider::after {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide-container">
+      <!-- Header -->
+      <div
+        class="h-20 flex items-center justify-between px-16 border-b border-gray-100 bg-white z-10"
+      >
+        <div class="flex items-center space-x-2">
+          <div
+            class="bg-gray-800 w-8 h-8 rounded-md flex items-center justify-center text-white"
+          >
+            <i class="fas fa-tags text-sm"></i>
+          </div>
+          <p class="text-gray-500 font-bold text-sm tracking-wider">
+            STRATEGIC PRICING
+          </p>
+        </div>
+        <div class="flex items-center space-x-4">
+          <span
+            class="text-xs text-gray-400 font-bold px-2 py-1 border border-gray-200 rounded"
+            >Phase: 掲載提案</span
+          >
+          <p class="text-gray-400 text-sm">推奨価格設定</p>
+        </div>
+      </div>
+      <!-- Main Content -->
+      <div class="flex-1 px-16 py-10 bg-gray-50 flex flex-col">
+        <!-- Title Section -->
+        <div class="mb-8">
+          <h2 class="text-3xl font-bold text-gray-800 mb-2 flex items-center">
+            <span class="text-hpb-orange mr-3">4層構造</span>の戦略的価格設計
+          </h2>
+          <p class="text-gray-600">
+            エリア平均単価（¥7,800）を意識しつつ、「新規集客のハードル下げ」と「LTV（顧客生涯価値）最大化」を<br />
+            両立させるための、役割の異なる4つの価格レイヤーを提案します。
+          </p>
+        </div>
+        <!-- Strategy Cards Container -->
+        <div class="flex-1 grid grid-cols-4 gap-4 mb-4">
+          <!-- Layer 1: New Customer Hook -->
+          <div
+            class="strategy-card bg-white rounded-xl shadow-sm border-t-4 border-blue-400 p-5 flex flex-col relative overflow-hidden"
+          >
+            <div class="absolute top-0 right-0 p-2 opacity-10">
+              <i class="fas fa-door-open text-6xl text-blue-500"></i>
+            </div>
+            <div class="mb-4">
+              <div
+                class="inline-block bg-blue-100 text-blue-600 text-xs font-bold px-2 py-1 rounded mb-2"
+              >
+                LAYER 1
+              </div>
+              <h3 class="text-lg font-bold text-gray-800">初回フック戦略</h3>
+              <p class="text-xs text-gray-500 mt-1">新規集客の最大化</p>
+            </div>
+            <div class="bg-blue-50 rounded-lg p-3 mb-4 text-center">
+              <p class="text-xs text-blue-600 font-bold mb-1">推奨クーポン例</p>
+              <p class="text-xs text-gray-600 mb-1">カット+カラー+Tr</p>
+              <p class="text-3xl font-bold text-gray-800 price-tag">¥6,900</p>
+            </div>
+            <div class="flex-1">
+              <p
+                class="text-xs font-bold text-gray-400 mb-2 border-b border-gray-100 pb-1"
+              >
+                設定根拠
+              </p>
+              <p class="text-sm text-gray-600 leading-relaxed">
+                渋谷エリアの平均単価¥7,800に対し、心理的ハードルとなる<strong
+                  class="text-blue-500"
+                  >¥7,000の壁を切る</strong
+                >設定。安すぎず「質」への期待も担保できるライン。
+              </p>
+            </div>
+            <div
+              class="mt-4 pt-3 border-t border-gray-100 flex items-center text-xs text-gray-500"
+            >
+              <i class="fas fa-bullseye text-blue-400 mr-2"></i>
+              <span>ターゲット: 全般・比較検討層</span>
+            </div>
+          </div>
+          <!-- Layer 2: Weekday/Idle Strategy -->
+          <div
+            class="strategy-card bg-white rounded-xl shadow-sm border-t-4 border-green-400 p-5 flex flex-col relative overflow-hidden"
+          >
+            <div class="absolute top-0 right-0 p-2 opacity-10">
+              <i class="fas fa-calendar-check text-6xl text-green-500"></i>
+            </div>
+            <div class="mb-4">
+              <div
+                class="inline-block bg-green-100 text-green-600 text-xs font-bold px-2 py-1 rounded mb-2"
+              >
+                LAYER 2
+              </div>
+              <h3 class="text-lg font-bold text-gray-800">稼働率対策</h3>
+              <p class="text-xs text-gray-500 mt-1">平日・アイドルタイム活用</p>
+            </div>
+            <div class="bg-green-50 rounded-lg p-3 mb-4 text-center">
+              <p class="text-xs text-green-600 font-bold mb-1">
+                平日限定クーポン
+              </p>
+              <p class="text-xs text-gray-600 mb-1">カット+カラー+Tr</p>
+              <p class="text-3xl font-bold text-gray-800 price-tag">¥5,900</p>
+            </div>
+            <div class="flex-1">
+              <p
+                class="text-xs font-bold text-gray-400 mb-2 border-b border-gray-100 pb-1"
+              >
+                設定根拠
+              </p>
+              <p class="text-sm text-gray-600 leading-relaxed">
+                最安値圏の競合（¥4,900）に対抗しつつ、<strong
+                  class="text-green-500"
+                  >空席ロスを最小化</strong
+                >するための戦略価格。学生や平日休み層を強力に誘引。
+              </p>
+            </div>
+            <div
+              class="mt-4 pt-3 border-t border-gray-100 flex items-center text-xs text-gray-500"
+            >
+              <i class="fas fa-bullseye text-green-400 mr-2"></i>
+              <span>ターゲット: 学生・フリーター</span>
+            </div>
+          </div>
+          <!-- Layer 3: Student/Trend Strategy -->
+          <div
+            class="strategy-card bg-white rounded-xl shadow-sm border-t-4 border-pink-400 p-5 flex flex-col relative overflow-hidden"
+          >
+            <div class="absolute top-0 right-0 p-2 opacity-10">
+              <i class="fas fa-user-graduate text-6xl text-pink-500"></i>
+            </div>
+            <div class="mb-4">
+              <div
+                class="inline-block bg-pink-100 text-pink-600 text-xs font-bold px-2 py-1 rounded mb-2"
+              >
+                LAYER 3
+              </div>
+              <h3 class="text-lg font-bold text-gray-800">若年層囲い込み</h3>
+              <p class="text-xs text-gray-500 mt-1">口コミ・トレンド拡散</p>
+            </div>
+            <div class="bg-pink-50 rounded-lg p-3 mb-4 text-center">
+              <p class="text-xs text-pink-600 font-bold mb-1">学割U24</p>
+              <p class="text-xs text-gray-600 mb-1">デザインカラー+Tr</p>
+              <p class="text-3xl font-bold text-gray-800 price-tag">
+                ¥6,400<span class="text-sm font-normal text-gray-500">〜</span>
+              </p>
+            </div>
+            <div class="flex-1">
+              <p
+                class="text-xs font-bold text-gray-400 mb-2 border-b border-gray-100 pb-1"
+              >
+                設定根拠
+              </p>
+              <p class="text-sm text-gray-600 leading-relaxed">
+                Siena渋谷の強みである「トレンド感」を活かし、<strong
+                  class="text-pink-500"
+                  >SNSでの口コミ拡散</strong
+                >を狙う。利益率より広告効果を優先。
+              </p>
+            </div>
+            <div
+              class="mt-4 pt-3 border-t border-gray-100 flex items-center text-xs text-gray-500"
+            >
+              <i class="fas fa-bullseye text-pink-400 mr-2"></i>
+              <span>ターゲット: 流行感度の高い学生</span>
+            </div>
+          </div>
+          <!-- Layer 4: LTV/Retention Strategy -->
+          <div
+            class="strategy-card bg-white rounded-xl shadow-sm border-t-4 border-hpb-orange p-5 flex flex-col relative overflow-hidden"
+          >
+            <div class="absolute top-0 right-0 p-2 opacity-10">
+              <i class="fas fa-gem text-6xl text-hpb-orange"></i>
+            </div>
+            <div class="mb-4">
+              <div
+                class="inline-block bg-hpb-orange-light text-hpb-orange text-xs font-bold px-2 py-1 rounded mb-2"
+              >
+                LAYER 4
+              </div>
+              <h3 class="text-lg font-bold text-gray-800">LTV最大化</h3>
+              <p class="text-xs text-gray-500 mt-1">高単価メニューへの定着</p>
+            </div>
+            <div class="bg-hpb-orange-light rounded-lg p-3 mb-4 text-center">
+              <p class="text-xs text-hpb-orange font-bold mb-1">
+                髪質改善 / 継続
+              </p>
+              <p class="text-xs text-gray-600 mb-1">初回¥8,800 →</p>
+              <p class="text-3xl font-bold text-gray-800 price-tag">¥12,800</p>
+            </div>
+            <div class="flex-1">
+              <p
+                class="text-xs font-bold text-gray-400 mb-2 border-b border-gray-100 pb-1"
+              >
+                設定根拠
+              </p>
+              <p class="text-sm text-gray-600 leading-relaxed">
+                入り口は低価格でも、信頼構築後に<strong class="text-hpb-orange"
+                  >「本質的なケア」</strong
+                >へ誘導。回数券導入で来店サイクルを固定化し収益安定へ。
+              </p>
+            </div>
+            <div
+              class="mt-4 pt-3 border-t border-gray-100 flex items-center text-xs text-gray-500"
+            >
+              <i class="fas fa-bullseye text-hpb-orange mr-2"></i>
+              <span>ターゲット: リピーター・悩み層</span>
+            </div>
+          </div>
+        </div>
+        <!-- Summary Footer -->
+        <div
+          class="bg-gray-800 text-white rounded-xl p-4 flex items-center justify-between shadow-lg mt-auto"
+        >
+          <div class="flex items-center space-x-4">
+            <div class="bg-hpb-orange p-3 rounded-full">
+              <i class="fas fa-lightbulb text-xl text-white"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-sm">STRATEGY SUMMARY</h4>
+              <p class="text-xs text-gray-300 mt-1">
+                「安さ」で呼び込み、「質」でファンにし、「高単価メニュー」で収益化する。<br />
+                この3ステップをクーポンとメニュー価格で構造化し、競合他社が追随しにくい独自の収益モデルを構築します。
+              </p>
+            </div>
+          </div>
+          <div class="flex space-x-8 px-8 border-l border-gray-600">
+            <div class="text-center">
+              <p class="text-xs text-gray-400 mb-1">想定平均客単価</p>
+              <p class="text-xl font-bold">¥7,200</p>
+            </div>
+            <div class="text-center">
+              <p class="text-xs text-gray-400 mb-1">稼働率目標</p>
+              <p class="text-xl font-bold text-hpb-orange">85%</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
