@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genspark スライドビューアー</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .viewer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .slide-info {
+            font-size: 16px;
+            font-weight: 500;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 30px;
+            background: #f8f9fa;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn-secondary:hover:not(:disabled) {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .view-toggle {
+            display: flex;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 2px solid #e9ecef;
+        }
+
+        .toggle-btn {
+            padding: 10px 24px;
+            border: none;
+            background: white;
+            color: #495057;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+
+        .toggle-btn.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .toggle-btn:hover:not(.active) {
+            background: #f8f9fa;
+        }
+
+        .content-area {
+            padding: 30px;
+            background: #f8f9fa;
+        }
+
+        .preview-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .slide-frame {
+            width: 100%;
+            height: 720px;
+            border: none;
+            display: block;
+            background: white;
+        }
+
+        .code-container {
+            display: none;
+            background: #1e1e1e;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .code-container.active {
+            display: block;
+        }
+
+        .code-header {
+            background: #2d2d2d;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #3d3d3d;
+        }
+
+        .code-title {
+            color: #cccccc;
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .copy-btn {
+            padding: 6px 16px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+
+        .copy-btn:hover {
+            background: #5568d3;
+        }
+
+        .copy-btn.copied {
+            background: #28a745;
+        }
+
+        .code-content {
+            padding: 20px;
+            overflow-x: auto;
+            max-height: 640px;
+            overflow-y: auto;
+        }
+
+        pre {
+            margin: 0;
+            color: #d4d4d4;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 720px;
+            font-size: 18px;
+            color: #6c757d;
+        }
+
+        .spinner {
+            animation: spin 1s linear infinite;
+            margin-right: 12px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .thumbnail-strip {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding: 20px 30px;
+            background: white;
+            border-top: 2px solid #e9ecef;
+        }
+
+        .thumbnail-strip::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .thumbnail-strip::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        .thumbnail-strip::-webkit-scrollbar-thumb {
+            background: #667eea;
+            border-radius: 4px;
+        }
+
+        .thumbnail {
+            flex-shrink: 0;
+            width: 160px;
+            height: 90px;
+            border: 3px solid transparent;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 600;
+            color: #6c757d;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .thumbnail:hover {
+            border-color: #667eea;
+            transform: translateY(-4px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        .thumbnail.active {
+            border-color: #667eea;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .thumbnail-number {
+            font-size: 24px;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div class="viewer-container">
+        <div class="header">
+            <h1>
+                <i class="fas fa-file-powerpoint"></i>
+                Genspark スライドビューアー
+            </h1>
+            <div class="slide-info" id="slideInfo">
+                スライド 1 / 23
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="nav-buttons">
+                <button class="btn btn-primary" id="prevBtn" onclick="previousSlide()">
+                    <i class="fas fa-chevron-left"></i>
+                    前へ
+                </button>
+                <button class="btn btn-primary" id="nextBtn" onclick="nextSlide()">
+                    次へ
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <button class="btn btn-secondary" id="firstBtn" onclick="goToSlide(1)">
+                    <i class="fas fa-step-backward"></i>
+                    最初
+                </button>
+                <button class="btn btn-secondary" id="lastBtn" onclick="goToSlide(23)">
+                    最後
+                    <i class="fas fa-step-forward"></i>
+                </button>
+            </div>
+
+            <div class="view-toggle">
+                <button class="toggle-btn active" id="previewBtn" onclick="switchView('preview')">
+                    <i class="fas fa-eye"></i>
+                    プレビュー
+                </button>
+                <button class="toggle-btn" id="codeBtn" onclick="switchView('code')">
+                    <i class="fas fa-code"></i>
+                    コード
+                </button>
+            </div>
+        </div>
+
+        <div class="content-area">
+            <div class="preview-container" id="previewContainer">
+                <iframe class="slide-frame" id="slideFrame"></iframe>
+            </div>
+
+            <div class="code-container" id="codeContainer">
+                <div class="code-header">
+                    <div class="code-title">
+                        <i class="fas fa-file-code"></i>
+                        <span id="codeFileName">slide01.html</span>
+                    </div>
+                    <button class="copy-btn" id="copyBtn" onclick="copyCode()">
+                        <i class="fas fa-copy"></i>
+                        コピー
+                    </button>
+                </div>
+                <div class="code-content">
+                    <pre id="codeContent"><div class="loading"><i class="fas fa-spinner spinner"></i>読み込み中...</div></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="thumbnail-strip" id="thumbnailStrip">
+            <!-- サムネイルがここに生成されます -->
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 23;
+        let currentView = 'preview';
+        let slideCode = '';
+
+        // 初期化
+        function init() {
+            generateThumbnails();
+            loadSlide(1);
+        }
+
+        // サムネイル生成
+        function generateThumbnails() {
+            const strip = document.getElementById('thumbnailStrip');
+            for (let i = 1; i <= totalSlides; i++) {
+                const thumb = document.createElement('div');
+                thumb.className = 'thumbnail';
+                if (i === 1) thumb.classList.add('active');
+                thumb.innerHTML = `<div class="thumbnail-number">${i.toString().padStart(2, '0')}</div>`;
+                thumb.onclick = () => goToSlide(i);
+                strip.appendChild(thumb);
+            }
+        }
+
+        // スライド読み込み
+        async function loadSlide(slideNumber) {
+            currentSlide = slideNumber;
+            const slidePath = `Genspark/slide${slideNumber.toString().padStart(2, '0')}.html`;
+            
+            // プレビュー更新
+            document.getElementById('slideFrame').src = slidePath;
+            
+            // コード読み込み
+            try {
+                const response = await fetch(slidePath);
+                slideCode = await response.text();
+                document.getElementById('codeContent').textContent = slideCode;
+                document.getElementById('codeFileName').textContent = `slide${slideNumber.toString().padStart(2, '0')}.html`;
+            } catch (error) {
+                document.getElementById('codeContent').textContent = 'コードの読み込みに失敗しました。';
+            }
+            
+            // UI更新
+            updateUI();
+        }
+
+        // UI更新
+        function updateUI() {
+            // スライド情報
+            document.getElementById('slideInfo').textContent = `スライド ${currentSlide} / ${totalSlides}`;
+            
+            // ナビゲーションボタン
+            document.getElementById('prevBtn').disabled = currentSlide === 1;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides;
+            document.getElementById('firstBtn').disabled = currentSlide === 1;
+            document.getElementById('lastBtn').disabled = currentSlide === totalSlides;
+            
+            // サムネイル
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            thumbnails.forEach((thumb, index) => {
+                thumb.classList.toggle('active', index + 1 === currentSlide);
+            });
+            
+            // サムネイルをスクロール
+            const activeThumb = document.querySelector('.thumbnail.active');
+            if (activeThumb) {
+                activeThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            }
+        }
+
+        // スライド移動
+        function previousSlide() {
+            if (currentSlide > 1) {
+                goToSlide(currentSlide - 1);
+            }
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides) {
+                goToSlide(currentSlide + 1);
+            }
+        }
+
+        function goToSlide(slideNumber) {
+            if (slideNumber >= 1 && slideNumber <= totalSlides) {
+                loadSlide(slideNumber);
+            }
+        }
+
+        // ビュー切り替え
+        function switchView(view) {
+            currentView = view;
+            
+            const previewContainer = document.getElementById('previewContainer');
+            const codeContainer = document.getElementById('codeContainer');
+            const previewBtn = document.getElementById('previewBtn');
+            const codeBtn = document.getElementById('codeBtn');
+            
+            if (view === 'preview') {
+                previewContainer.style.display = 'block';
+                codeContainer.classList.remove('active');
+                previewBtn.classList.add('active');
+                codeBtn.classList.remove('active');
+            } else {
+                previewContainer.style.display = 'none';
+                codeContainer.classList.add('active');
+                previewBtn.classList.remove('active');
+                codeBtn.classList.add('active');
+            }
+        }
+
+        // コードコピー
+        function copyCode() {
+            const copyBtn = document.getElementById('copyBtn');
+            navigator.clipboard.writeText(slideCode).then(() => {
+                copyBtn.innerHTML = '<i class="fas fa-check"></i> コピー完了！';
+                copyBtn.classList.add('copied');
+                
+                setTimeout(() => {
+                    copyBtn.innerHTML = '<i class="fas fa-copy"></i> コピー';
+                    copyBtn.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        // キーボードショートカット
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                previousSlide();
+            } else if (e.key === 'ArrowRight') {
+                nextSlide();
+            } else if (e.key === 'Home') {
+                goToSlide(1);
+            } else if (e.key === 'End') {
+                goToSlide(totalSlides);
+            } else if (e.key === 'p' || e.key === 'P') {
+                switchView('preview');
+            } else if (e.key === 'c' || e.key === 'C') {
+                switchView('code');
+            }
+        });
+
+        // 初期化実行
+        init();
+    </script>
+</body>
+</html>
+
